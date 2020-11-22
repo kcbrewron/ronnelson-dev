@@ -1,0 +1,47 @@
+.brand{
+    text-align: left;
+    display: inline;
+    padding-left: .5em;
+    font-size: 1.5rem;
+    color:#B8DBD9;
+
+}
+.links a {
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    height: 2rem;
+    color:#586F7C;
+    margin-top:10px;
+    padding: .5em 2em;
+}
+.links a:hover{
+    text-decoration: none;
+    list-style-type: none;
+    text-shadow: #586F7C;
+    color:#B8DBD9
+
+}
+.links{
+    display: inline;
+    padding-left: .5em;
+    position: absolute;
+    right: 0;
+}
+.container{
+    width: 100%;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    position: fixed;
+    display: inline;
+    background-color: #000000;
+    overflow: hidden;
+    justify-content: center;
+    align-content: center;
+    top:0;
+    padding: .5em .5em;
+    border-bottom: #586F7C;
+    border-style: solid;
+    border-width: .2rem;
+
+}
