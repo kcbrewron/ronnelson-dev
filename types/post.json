@@ -1,0 +1,52 @@
+{
+  "Main": {
+    "title": {
+        "type": "Text",
+        "config": {
+          "label": "title"
+        }
+      },
+      "author": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["author"],
+        "label": "author"
+        }
+      },
+      "content": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, strong, hyperlink, image",
+        "label": "content"
+      }
+    },
+      "description":{
+        "type": "Text",
+        "config":{
+          "label": "descrption"
+        }
+      },
+      "date": {
+      "type": "Date",
+      "config": {
+        "label": "date"
+      }
+    },
+      "uid": {
+      "type": "UID",
+      "config": {
+        "label": "slug"
+      },
+      "hero": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["hero"],
+        "label": "hero"
+        }
+      }
+
+    }
+  }
+}

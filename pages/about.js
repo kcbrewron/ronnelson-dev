@@ -1,26 +1,30 @@
 import Head from "next/head";
 import Footer from "@components/Footer";
 import Nav from "@components/Nav";
-import { getAllPostsForHome } from "@utils/api";
-import Hero from "@components/Hero";
-import Post from "@components/Post";
+import Author from "@components/Author";
+import { fetchAsset, fetchEntry } from "@utils/contentfulPosts";
 
-export default function Home({ preview, allPosts }) {
-  const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1600&h=300";
+export default function About() {
+  let image =
+    "https://images.ctfassets.net/2tyl7ps8aucz/1PKYllkrwzPlwoXKa0zd7U/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?fm=jpg&fl=progressive&w=1200&h=400";
+  let name = "Ron Nelson";
   return (
     <div>
       <Nav />
       <Head>
         <title>Ronnelson.dev</title>
-        <meta charSet="UTF-8" />
+        <meta
+          name="description"
+          content="My website platform for learning development, building my skills, and challenging myself."
+        />
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          itemProp="description"
+          itemprop="description"
           content="My website platform for learning development, building my skills, and challenging myself."
         />
         <meta
-          itemProp="image"
+          itemprop="image"
           content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250"
         />
 
@@ -49,21 +53,11 @@ export default function Home({ preview, allPosts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Post
-        hero={customImage}
-        title={heroPost.title}
-        date={heroPost.date}
-        author={heroPost.author.name}
-        content={heroPost.content}
-        slug={heroPost.slug}
-      ></Post>
+      <main>
+        <Author name={name} image={image} />
+      </main>
+
       <Footer />
     </div>
   );
-}
-export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getAllPostsForHome(preview)) ?? [];
-  return {
-    props: { preview, allPosts },
-  };
 }

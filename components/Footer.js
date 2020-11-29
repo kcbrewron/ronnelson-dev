@@ -1,11 +1,9 @@
-import styles from './Footer.module.css'
-
 export default function Footer() {
   return (
     <>
-      <footer className={styles.footer}>
-        Ron Nelson &#169;
+      <footer className="md:w-full bg-charcoal p-2 h-10 text-lg text-powder absolute bottom-0">
+        Ron Nelson &#169; 2020
       </footer>
     </>
-  )
+  );
 }
