@@ -13,7 +13,7 @@ export default function Post({
   const customDate = processDate(date);
   console.log("Content ==> " + content);
   return (
-    <div className="md:container max-h-screen overflow-scroll">
+    <div className="md:container max-h-screen">
       <Hero url={hero} />
       <p className="text-base text-charcoal">
         Written By: {author} on {customDate}
