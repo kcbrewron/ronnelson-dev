@@ -11,9 +11,8 @@ export default function Post({
   hero,
 }) {
   const customDate = processDate(date);
-  console.log("Content ==> " + content);
   return (
-    <div className="md:container max-h-screen">
+    <div className="md:container flex-grow-1 overflow-auto">
       <Hero url={hero} />
       <p className="text-base text-charcoal">
         Written By: {author} on {customDate}

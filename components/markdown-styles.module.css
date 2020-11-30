@@ -6,7 +6,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-6 text-electric;
 }
 
 .markdown h2 {
@@ -15,4 +15,11 @@
 
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug text-charcoal;
+}
+
+.markdown h4 {
+  @apply text-xl mt-8 mb-4 leading-snug text-charcoal;
+}
+.markdown h5 {
+  @apply text-xl mt-8 mb-4 leading-snug text-charcoal;
 }
