@@ -2,7 +2,6 @@ import Head from "next/head";
 import Footer from "@components/Footer";
 import Nav from "@components/Nav";
 import { getAllPostsForHome } from "@utils/api";
-import Hero from "@components/Hero";
 import Post from "@components/Post";
 
 export default function Home({ preview, allPosts }) {
