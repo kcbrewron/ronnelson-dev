@@ -1,7 +1,13 @@
 module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
+  corePlugins: {
+    placeSelf: false,
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    gridTemplateColumns: {
+      16: "repeat(16, minmax(0, 1fr))",
+    },
     screens: {
       sm: "480px",
       md: "768px",
@@ -33,14 +39,17 @@ module.exports = {
       lg: "4rem",
       xl: "5rem",
       "2xl": "6rem",
-      center: true,
     },
     colors: {
       ghost: "#F4F4F9",
+      charleston: "#182328",
       black: "#000000",
       charcoal: "#2F4550",
       electric: "#586F7C",
       powder: "#B8DBD9",
+      deepSpace: "#445A66",
+      pewter: "#88A5AB",
+      cadet: "#A6B2BB",
     },
     extend: {
       spacing: {

@@ -2,17 +2,10 @@ import Hero from "@components/Hero";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import markdownStyles from "./markdown-styles.module.css";
 
-export default function Post({
-  date,
-  author,
-  content,
-  description,
-  slug,
-  hero,
-}) {
+export default function Post({ date, author, content, hero }) {
   const customDate = processDate(date);
   return (
-    <div className="md:container flex-grow-1 overflow-auto">
+    <div className="w-7/12 mx-auto shadow-lg px-4">
       <Hero url={hero} />
       <p className="text-base text-charcoal">
         Written By: {author} on {customDate}
@@ -25,7 +18,6 @@ export default function Post({
 }
 
 function processDate(date) {
-  console.log(date);
   let newDate =
     date.substring(5, 7) +
     "." +

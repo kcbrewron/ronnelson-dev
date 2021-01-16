@@ -1,7 +1,7 @@
 export default function Hero({ url, alt, cta, title }) {
   return (
-    <div className="md:container md:mx-auto overflow-scroll">
-      <img src={url} alt={alt} />
+    <div id="heroItem">
+      <img src={url} alt={alt} width="1200px" heigh="300px" />
     </div>
   );
 }
