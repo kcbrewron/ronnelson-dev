@@ -6,19 +6,19 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6 text-electric;
+  @apply my-6 text-charcoal;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-8 mb-4 leading-snug text-charcoal;
+  @apply text-3xl mt-8 mb-4 leading-snug text-electric;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug text-charcoal;
+  @apply text-2xl mt-8 mb-4 leading-snug text-electric;
 }
 
 .markdown h4 {
-  @apply text-xl mt-8 mb-4 leading-snug text-charcoal;
+  @apply text-xl mt-8 mb-4 leading-snug text-electric;
 }
 .markdown h5 {
   @apply text-xl mt-8 mb-4 leading-snug text-charcoal;

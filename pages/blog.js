@@ -48,7 +48,7 @@ export default function Blog({ posts }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="">
+      <div>
         <h3 className="text-charcoal">Most Recent Articles:</h3>
       </div>
       <div className="grid gap-8 md:grid-cols-3 m-10"></div>

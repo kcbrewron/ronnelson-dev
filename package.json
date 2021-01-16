@@ -20,6 +20,9 @@
     "react-dom": "17.0.1",
     "tailwindcss": "^2.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10"
+  },
   "peerDependencies": {}
 }

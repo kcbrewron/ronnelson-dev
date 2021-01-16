@@ -4,7 +4,7 @@ export default function Author({ name, image }) {
       <div>
         <img src={image} alt="Ron Nelson" />
       </div>
-      <div classNames>{name}</div>
+      <div>{name}</div>
     </>
   );
 }

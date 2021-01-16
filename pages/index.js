@@ -6,12 +6,13 @@ import Post from "@components/Post";
 
 export default function Home({ preview, allPosts }) {
   const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1600&h=300";
+  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1200&h=500";
   return (
-    <div>
+    <div className="w-full max-w-8xl mx-auto place-items-center">
       <Nav />
       <Head>
         <title>Ronnelson.dev</title>
+        <link rel="icon" href="/favicon.ico" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -45,17 +46,16 @@ export default function Home({ preview, allPosts }) {
           name="twitter:image"
           content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Post
+        className="md:flex-1 content-center items-center justify-items-center"
         hero={customImage}
         title={heroPost.title}
         date={heroPost.date}
         author={heroPost.author.name}
         content={heroPost.content}
         slug={heroPost.slug}
-      ></Post>
+      />
       <Footer />
     </div>
   );
