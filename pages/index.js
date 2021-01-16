@@ -6,7 +6,7 @@ import Post from "@components/Post";
 
 export default function Home({ preview, allPosts }) {
   const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1200&h=500";
+  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1200&h=400";
   return (
     <div className="w-full max-w-8xl mx-auto place-items-center">
       <Nav />
@@ -48,7 +48,7 @@ export default function Home({ preview, allPosts }) {
         />
       </Head>
       <Post
-        className="md:flex-1 content-center items-center justify-items-center"
+        className="md:flex-1"
         hero={customImage}
         title={heroPost.title}
         date={heroPost.date}
