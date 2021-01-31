@@ -3,7 +3,7 @@ export default function Layout() {
     <div>
       <Nav />
       <div className="container">
-        <Post />
+        <Post className="place-items-center justify-items-center" />
       </div>
       <Footer />
     </div>

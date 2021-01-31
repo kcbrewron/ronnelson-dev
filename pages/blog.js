@@ -1,26 +1,27 @@
 import Head from "next/head";
 import Footer from "@components/Footer";
 import Nav from "@components/Nav";
-import Card from "@components/Card";
+import { getAllPostsForHome } from "@utils/api";
 
-export default function Blog({ posts }) {
+import Post from "@components/Post";
+import Hero from "@components/Hero";
+
+export default function TestLayout({ preview, allPosts, recentPosts }) {
+  const heroPost = allPosts[0];
+  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1920&h=300";
   return (
-    <div>
-      <Nav />
+    <div className="bg-cultured">
       <Head>
-        <title>Ronnelson.dev</title>
-        <meta
-          name="description"
-          content="My website platform for learning development, building my skills, and challenging myself."
-        />
-        <meta charset="UTF-8" />
+        <title>Ronnelson.dev-Homepage</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
-          itemprop="description"
+          itemProp="description"
           content="My website platform for learning development, building my skills, and challenging myself."
         />
         <meta
-          itemprop="image"
+          itemProp="image"
           content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250"
         />
 
@@ -46,13 +47,39 @@ export default function Blog({ posts }) {
           name="twitter:image"
           content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h3 className="text-charcoal">Most Recent Articles:</h3>
+      <div className="cols-span-12 text-lg top-0">
+        <Nav />
       </div>
-      <div className="grid gap-8 md:grid-cols-3 m-10"></div>
-      <Footer />
+      <div className="grid grid-cols-12 cols-a gap-3 mb-10 place-items-center">
+        <Hero url={customImage} alt={"image"} />
+        <div className="w-7/12 shadow-lg place-content-center">
+          <Post
+            title={heroPost.title}
+            date={heroPost.date}
+            author={heroPost.author.name}
+            content={heroPost.content}
+            slug={heroPost.slug}
+          />
+        </div>
+      </div>
+      <div className="cols-span-12 w-full text-lg bottom-0">
+        <Footer />
+      </div>
     </div>
   );
+}
+export async function getStaticProps({ preview = false }) {
+  const allPosts = (await getAllPostsForHome(preview)) ?? [];
+  let recentPosts = [];
+  if (allPosts.length >= 4) {
+    recentPosts = allPosts.slice(1, 4);
+  } else if ((allPosts.length = 3)) {
+    recentPosts = allPosts.slice(1, 3);
+  } else if ((allPosts.length = 2)) {
+    recentPosts = allPosts.slice(1);
+  }
+  return {
+    props: { preview, allPosts, recentPosts },
+  };
 }

@@ -5,9 +5,8 @@ import markdownStyles from "./markdown-styles.module.css";
 export default function Post({ date, author, content, hero }) {
   const customDate = processDate(date);
   return (
-    <div className="w-7/12 mx-auto shadow-lg px-4">
-      <Hero url={hero} />
-      <p className="text-base text-charcoal">
+    <div>
+      <p className="text-base px-4 py-2 text-charcoal">
         Written By: {author} on {customDate}
       </p>
       <div className={markdownStyles["markdown"]}>

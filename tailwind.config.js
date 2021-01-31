@@ -50,6 +50,12 @@ module.exports = {
       deepSpace: "#445A66",
       pewter: "#88A5AB",
       cadet: "#A6B2BB",
+      blueRyb: "#0D41E1",
+      blueJeans: "#09A6F3",
+      vividSky: "#07C8F9",
+      gray: "#CED4DA",
+      lightGray: "#E9ECEF",
+      cultured: "#F8F9FA",
     },
     extend: {
       spacing: {

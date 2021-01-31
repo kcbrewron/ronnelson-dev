@@ -2,6 +2,7 @@ const POST_GRAPHQL_FIELDS = `
       title
       description
       date,
+      slug,
       content{ json }
       author{name,image{url,width,height,title}},
       hero {
