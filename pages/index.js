@@ -3,14 +3,13 @@ import Footer from "@components/Footer";
 import Nav from "@components/Nav";
 import { getAllPostsForHome } from "@utils/api";
 import Post from "@components/Post";
-import RecentArticles from "@components/RecentArticles";
+import Hero from "@components/Hero";
 
 export default function Home({ preview, allPosts, recentPosts }) {
   const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1200&h=400";
+  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1920&h=300";
   return (
-    <div className="md:grid-cols-6 lg:grid-cols-12 sm:grid-cols-3 w-full max-w-8xl mx-auto place-items-center">
-      <Nav />
+    <div className="bg-cultured">
       <Head>
         <title>Ronnelson.dev-Homepage</title>
         <link rel="icon" href="/favicon.ico" />
@@ -48,20 +47,24 @@ export default function Home({ preview, allPosts, recentPosts }) {
           content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250"
         />
       </Head>
-      <Post
-        className="col-span-7 col-start-3"
-        hero={customImage}
-        title={heroPost.title}
-        date={heroPost.date}
-        author={heroPost.author.name}
-        content={heroPost.content}
-        slug={heroPost.slug}
-      />
-      <RecentArticles
-        className="col-span-2 col-start-9"
-        recentPosts={recentPosts}
-      />
-      <Footer />
+      <div className="cols-span-12 text-lg top-0">
+        <Nav />
+      </div>
+      <div className="grid grid-cols-12 cols-a gap-3 mb-10 place-items-center">
+        <Hero url={customImage} alt={"image"} />
+        <div className="w-7/12 shadow-lg place-content-center">
+          <Post
+            title={heroPost.title}
+            date={heroPost.date}
+            author={heroPost.author.name}
+            content={heroPost.content}
+            slug={heroPost.slug}
+          />
+        </div>
+      </div>
+      <div className="cols-span-12 w-full text-lg bottom-0">
+        <Footer />
+      </div>
     </div>
   );
 }
