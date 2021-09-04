@@ -1,4 +1,4 @@
-import { Link } from 'next/link';
+import Link from 'next/link';
 
 export default function Nav() {
   return (
@@ -15,21 +15,21 @@ export default function Nav() {
             className='inline-block px-4 hover:bg-charcoal hover:text-ghost rounded-md'
             alt='Home'
           >
-            Home
+            <a>Home</a>
           </Link>
           <Link
             href='/about'
             className='inline-block px-4 justify-end hover:bg-charcoal hover:text-ghost rounded-md'
             alt='About Me'
           >
-            About
+            <a>About</a>
           </Link>
           <Link
             href='/blog'
             className='inline-block px-4 justify-end hover:bg-charcoal hover:text-ghost rounded-md'
             alt='blog'
           >
-            Blog
+            <a>Blog</a>
           </Link>
         </div>
       </div>

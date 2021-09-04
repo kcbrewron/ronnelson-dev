@@ -1,4 +1,4 @@
-import { Image } from 'next/image';
+import Image from 'next/image';
 export default function Hero({ url, alt, cta, title }) {
   return (
     <div id='heroItem'>
