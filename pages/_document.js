@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,10 +10,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <script
+          <NextScript
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK"
-          ></script>
+            src='https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK'
+          ></NextScript>
         </Head>
         <body>
           <Main />

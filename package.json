@@ -8,7 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "lint": "next lint"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
@@ -23,7 +24,9 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10"
+    "@babel/preset-react": "^7.12.10",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2"
   },
   "peerDependencies": {}
 }
