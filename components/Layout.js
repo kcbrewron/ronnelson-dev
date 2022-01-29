@@ -1,10 +1,10 @@
-export default function Layout() {
+import { Nav, Footer } from './components';
+import { children } from 'react';
+export default function Layout({ children }) {
   return (
     <div>
       <Nav />
-      <div className="container">
-        <Post className="place-items-center justify-items-center" />
-      </div>
+      <main>{children}</main>
       <Footer />
     </div>
   );
