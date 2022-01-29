@@ -3,11 +3,9 @@ import Footer from '@components/Footer';
 import Nav from '@components/Nav';
 import { getAllPostsForHome } from '@utils/api';
 import Post from '@components/Post';
-import Hero from '@components/Hero';
 import Script from 'next/script';
 export default function Home({ preview, allPosts, recentPosts }) {
   const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + '?fit=fill&w=1920&h=300';
   return (
     <div className='bg-cultured'>
       <Head>
@@ -19,10 +17,6 @@ export default function Home({ preview, allPosts, recentPosts }) {
           itemProp='description'
           content='My website platform for learning development, building my skills, and challenging myself.'
         />
-        <meta
-          itemProp='image'
-          content='https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250'
-        />
 
         <meta property='og:url' content='https://ronnelson.dev' />
         <meta property='og:type' content='website' />
@@ -31,10 +25,6 @@ export default function Home({ preview, allPosts, recentPosts }) {
           property='og:description'
           content='My website platform for learning development, building my skills, and challenging myself.'
         />
-        <meta
-          property='og:image'
-          content='https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250'
-        />
 
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:title' content='Ronnelson.dev' />
@@ -42,10 +32,7 @@ export default function Home({ preview, allPosts, recentPosts }) {
           name='twitter:description'
           content='My website platform for learning development, building my skills, and challenging myself.'
         />
-        <meta
-          name='twitter:image'
-          content='https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg?h=250'
-        />
+
       </Head>
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK' />
       <div className='cols-span-12 text-lg top-0'>
