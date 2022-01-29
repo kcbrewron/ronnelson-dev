@@ -54,7 +54,6 @@ export default function About() {
       </Head>
 
       <main>
-        <Author name={name} image={image} />
       </main>
 
       <Footer />
