@@ -51,9 +51,8 @@ export default function Home({ preview, allPosts, recentPosts }) {
       <div className='cols-span-12 text-lg top-0'>
         <Nav />
       </div>
-      <div className='grid grid-cols-12 cols-a gap-3 mb-10 place-items-center'>
-        <Hero url={customImage} alt={'image'} />
-        <div className='w-7/12 shadow-lg place-content-center'>
+      <div className="grid grid-cols-12 cols-a gap-3 mb-10 place-items-center">
+        <div className="w-7/12 shadow-lg place-content-center">
           <Post
             title={heroPost.title}
             date={heroPost.date}
