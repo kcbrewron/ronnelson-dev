@@ -1,6 +1,5 @@
-import { Nav, Post, Footer } from './components';
-import { NextLayout } from 'next/layout';
-import { Children } from 'react';
+import { Nav, Footer } from './components';
+import { children } from 'react';
 export default function Layout({ children }) {
   return (
     <div>
