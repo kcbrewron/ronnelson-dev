@@ -32,26 +32,19 @@ export default function Home({ preview, allPosts, recentPosts }) {
           name='twitter:description'
           content='My website platform for learning development, building my skills, and challenging myself.'
         />
-
       </Head>
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK' />
-      <div className='cols-span-12 text-lg top-0'>
-        <Nav />
-      </div>
-      <div className="grid grid-cols-12 cols-a gap-3 mb-10 place-items-center">
-        <div className="w-7/12 shadow-lg place-content-center">
-          <Post
-            title={heroPost.title}
-            date={heroPost.date}
-            author={heroPost.author.name}
-            content={heroPost.content}
-            slug={heroPost.slug}
-          />
-        </div>
-      </div>
-      <div className='cols-span-12 w-full text-lg bottom-0'>
+      <Nav />
+
+      <Post
+        title={heroPost.title}
+        date={heroPost.date}
+        author={heroPost.author.name}
+        content={heroPost.content}
+        slug={heroPost.slug}
+        heroImg={heroPost.hero}
+      />
         <Footer />
-      </div>
     </div>
   );
 }

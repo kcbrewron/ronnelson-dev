@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-lg leading-relaxed text-charcoal;
+  @apply text-lg leading-relaxed text-charcoal
 }
 
 .markdown p,
@@ -20,6 +20,7 @@
 .markdown h4 {
   @apply text-xl mt-8 mb-4 px-10 leading-snug text-electric;
 }
+
 .markdown h5 {
   @apply text-xl mt-8 mb-4 px-10 leading-snug text-charcoal;
 }

@@ -42,7 +42,7 @@ export default function Functions({ helloWorld }) {
   );
 }
 
-export async function getStaticProps() {
+/*export async function getStaticProps() {
   const response = await fetch('http://localhost:8888/.netlify/functions/hello-world')
     .then((response) => response.json()
   );
@@ -51,3 +51,4 @@ export async function getStaticProps() {
     props: { response },
   };
 }
+*/
