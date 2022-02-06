@@ -1,4 +1,7 @@
 [build]
   command = "npm run build && npm run export"
-  functions = ".netlify/functions"
+  functions = "netlify/functions"
   publish = "out"
+
+[plugins]
+  package = "netlify-plugin-is-website-vulnerable"
