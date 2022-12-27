@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import Script from 'next/script';
 
 export default function Nav() {
   return (
@@ -9,7 +8,6 @@ export default function Nav() {
         <title>Ronnelson.dev-Homepage</title>
         <link rel='icon' href='/favicon.ico' />
         <meta charSet='UTF-8' />
-        <meta description="Ron Nelson's personal ramblings of softare development, life, family and books." />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta
           itemProp='description'
