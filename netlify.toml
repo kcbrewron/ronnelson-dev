@@ -1,7 +1,24 @@
 [build]
   command = "npm run build && npm run export"
-  functions = "netlify/functions"
-  publish = "out"
+  publish = ".next"
+[[plugins]]
+package = "netlify-plugin-is-website-vulnerable"
 
-[plugins]
-  package = "netlify-plugin-is-website-vulnerable"
+# Configuration for a plugin published to npm
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+  [plugins.inputs]
+  output_path = "reports/lighthouse.html"
+
+# Use double brackets since `plugins` is an array of tables.
+[[context.production.plugins]]
+package = "@netlify/plugin-sitemap"
+
+[[plugings]]
+package = "@netlify/plugin-nextjs"
+
+functions = "netlify/functions"
+edge-functions = "netlify/edge-functions"
+
+
+
