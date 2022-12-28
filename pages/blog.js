@@ -7,8 +7,6 @@ import Post from "@components/Post";
 import Hero from "@components/Hero";
 
 export default function TestLayout({ preview, allPosts, recentPosts }) {
-  const heroPost = allPosts[0];
-  const customImage = heroPost.hero.heroImage.url + "?fit=fill&w=1920&h=300";
   return (
     <div className="bg-cultured">
       <Head>
@@ -52,16 +50,7 @@ export default function TestLayout({ preview, allPosts, recentPosts }) {
         <Nav />
       </div>
       <div className="grid grid-cols-12 cols-a gap-3 mb-10 place-items-center">
-        <Hero url={customImage} alt={"image"} />
-        <div className="w-7/12 shadow-lg place-content-center">
-          <Post
-            title={heroPost.title}
-            date={heroPost.date}
-            author={heroPost.author.name}
-            content={heroPost.content}
-            slug={heroPost.slug}
-          />
-        </div>
+       
       </div>
       <div className="cols-span-12 w-full text-lg bottom-0">
         <Footer />

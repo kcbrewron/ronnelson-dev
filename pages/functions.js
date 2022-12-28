@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import Footer from '@components/Footer';
 import Nav from '@components/Nav';
-import { getAllPostsForHome } from '@utils/api';
-import Post from '@components/Post';
 import Script from 'next/script';
-export default function Home({ preview, allPosts, recentPosts }) {
-  const heroPost = allPosts[0];
+
+export default function Functions({ helloWorld }) {
   return (
     <div className='bg-cultured'>
       <Head>
@@ -35,30 +33,22 @@ export default function Home({ preview, allPosts, recentPosts }) {
       </Head>
       <Script src='https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK' />
       <Nav />
+      <body className="py-5 text-center">
+        <p>{helloWorld}</p>
+      </body>
 
-      <Post
-        title={heroPost.title}
-        date={heroPost.date}
-        author={heroPost.author.name}
-        content={heroPost.content}
-        slug={heroPost.slug}
-        heroImg={heroPost.hero}
-      />
-        <Footer />
+      <Footer />
     </div>
   );
 }
-export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getAllPostsForHome(preview)) ?? [];
-  let recentPosts = [];
-  if (allPosts.length >= 4) {
-    recentPosts = allPosts.slice(1, 4);
-  } else if ((allPosts.length = 3)) {
-    recentPosts = allPosts.slice(1, 3);
-  } else if ((allPosts.length = 2)) {
-    recentPosts = allPosts.slice(1);
-  }
-  return {
-    props: { preview, allPosts, recentPosts },
+
+/*export async function getStaticProps() {
+  const response = await fetch('http://localhost:8888/.netlify/functions/hello-world')
+    .then((response) => response.json()
+  );
+  console.log(response);
+  return { 
+    props: { response },
   };
 }
+*/

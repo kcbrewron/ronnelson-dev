@@ -16,3 +16,9 @@ package = "@netlify/plugin-sitemap"
 
 [[plugings]]
 package = "@netlify/plugin-nextjs"
+
+functions = "netlify/functions"
+edge-functions = "netlify/edge-functions"
+
+
+
