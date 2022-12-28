@@ -14,7 +14,6 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@netlify/plugin-lighthouse": "^4.0.3",
-    "@netlify/plugin-nextjs": "^4.29.4",
     "@netlify/plugin-sitemap": "^0.8.1",
     "autoprefixer": "^10.2.4",
     "contentful": "^8.1.7",
@@ -29,6 +28,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@netlify/plugin-nextjs": "^4.29.4",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "^8.3.0",
