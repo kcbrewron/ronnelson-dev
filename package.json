@@ -5,11 +5,11 @@
   "author": "Ron Nelson",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export",
-    "lint": "next lint"
+    "dev": "npx next dev",
+    "build": "npx next build",
+    "start": "npx next start",
+    "export": "npx next export",
+    "lint": "npx next lint"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
