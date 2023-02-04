@@ -1,5 +1,5 @@
 [build]
-  command = "npm next build && npm next export"
+  command = "npm run build && npm run export"
   publish = "out"
 [[plugins]]
 package = "netlify-plugin-is-website-vulnerable"

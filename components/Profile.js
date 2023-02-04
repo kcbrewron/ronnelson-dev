@@ -7,7 +7,7 @@ const myLoader = ({ src, width,quality }) => {
 };
 export default function Profile() {
   return <>
-    <Link href='https://github.com/kcbrewron' className='space-x-1.0'>
+    <Link href='https://github.com/kcbrewron' className='space-x-1.0' passHref>
 
       <Image
         loader={myLoader}
