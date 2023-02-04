@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 export default function Hero({ url, alt, cta, title }) {
   const myLoader = ({ src, width, height }) => {
     return `${src}?fit=fill&f=center`;
