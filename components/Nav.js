@@ -50,20 +50,17 @@ export default function Nav() {
           <Link href='/' className='px-4 rounded-md' alt='Home'>
             
               Home
-            
           </Link>
           <Link
             href='/about'
-            className='col-start-9 ...  justify-end rounded-md'
+            className='col-start-9 ...px-4 rounded-md'
             alt='About Me'
           >
-            
-              About
-            
+          About
           </Link>
           <Link
             href='/blog'
-            className='col-start-10 ... justify-end rounded-md'
+            className='col-start-10 ... px-4 rounded-md'
             alt='blog'
           >
             

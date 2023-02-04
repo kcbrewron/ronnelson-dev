@@ -10,8 +10,8 @@ export default function Hero({ url, alt, cta, title }) {
         src={url}
         alt={alt}
         width={1720}
+        height={16}
         quality={75}
-        layout='fill'
         priority
       />
     </>

@@ -16,14 +16,14 @@ export default function Profile() {
         width={16}
         height={16}
         quality={100}
-        ßaria-label='github'
+        aria-label='github'
         alt='github logo'
       />Github
     </Link>
     <Link
       href='https://www.linkedin.com/in/kc-ronnelson/'
-      className='px-4 hover:text-ghost'>
-
+      className='px-4 hover:text-ghost'
+      passHref>
       <Image
         loader={myLoader}
         className='space-x-0.5'
@@ -38,8 +38,8 @@ export default function Profile() {
     </Link>
     <Link
       href='https://twitter.com/kcbrewron'
-      className='space-x-0.5 hover:text-ghost'>
-
+      className='space-x-0.5 hover:text-ghost'
+      passHref>
       <Image
         loader={myLoader}
         placeholder='empty'

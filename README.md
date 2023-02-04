@@ -46,4 +46,5 @@ OR
 ```bash
 yarn add next@latest react@latest react-dom@latest
 ```
-2. I've taken care to update all of my dependencies to the latest and worked to ensure compatability
+2. I've taken care to update all of my dependencies to the latest and worked to ensure compatability.
+3. I had issues with Link elements that redered as <a> tags and included <a> tags as children. This was likely a previous oversight on my part. I utilized the @next/codemod with the new-link command.
