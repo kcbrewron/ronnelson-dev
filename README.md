@@ -49,3 +49,4 @@ yarn add next@latest react@latest react-dom@latest
 2. I've taken care to update all of my dependencies to the latest and worked to ensure compatability.
 3. I had issues with Link elements that redered as <a> tags and included <a> tags as children. This was likely a previous oversight on my part. I utilized the @next/codemod with the new-link command.
 4. The referenced changes and help in migrating from nextjs 12 to nextjs13 is listed (here)[https://nextjs.org/blog/next-13]
+5. My hosting and edge utilities are all provided by netlify. I had to add the experimental flag as well as a new nextjs plugin documented [here](https://www.netlify.com/blog/deploy-nextjs-13/)

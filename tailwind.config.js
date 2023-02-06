@@ -15,8 +15,8 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      sans: ["Roboto", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      sans: ["Proza Libre", "sans-serif"],
+      serif: ["Rubik", "serif"],
       body: ["Open Sans"],
     },
     fontSize: {
