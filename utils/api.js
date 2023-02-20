@@ -1,3 +1,46 @@
+const HOME_GRAPHQL_FIELDS=`
+      title,
+      hero {url,width,height,description,title},
+      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
+      published,
+      siteIntro{
+        json
+        links {
+          entries {
+            inline {
+              sys {
+                id
+                spaceId
+                environmentId
+              }
+            __typename
+              ... on Home {
+              title
+              }
+            }
+            block {
+              sys {
+                id
+              }
+            }
+          }
+          assets{
+            block {
+                sys {
+                  id
+                }
+                url
+                title
+                width
+                height
+                description
+              }}
+          }
+      }
+      
+  }`
+
+
 const POST_GRAPHQL_FIELDS = `
       title
       description
@@ -137,6 +180,70 @@ export async function getAllPostsWithSlug() {
     }`
   );
   return extractPostEntries(entries);
+}
+
+/**
+ * TODO move the inital part of the query here so we can use this for
+ * all landing page queries.
+ * 
+ * @param { string } landing 
+ * @param {*} preview 
+ * 
+ * @returns 
+ */
+export async function fetchHome(){
+ const entries = await fetchGraphQL(
+  `query {
+  homeCollection(limit:1) {
+    items{
+      title,
+      heroImage {url,width,height,description,title},
+      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
+      published,
+      content{
+        json
+        links {
+          entries {
+            inline {
+              sys {
+                id
+                spaceId
+                environmentId
+              }
+            __typename
+              ... on Home {
+              title
+              }
+            }
+            block {
+              sys {
+                id
+              }
+            }
+          }
+          assets{
+            block {
+                sys {
+                  id
+                }
+                url
+                title
+                width
+                height
+                description
+              }}
+          }
+      }
+      
+  }
+}
+}`);
+  return extractHome(entries);
+}
+
+function extractHome(fetchResponse){
+  const respone = fetchResponse.data.homeCollection.items?fetchResponse.data.homeCollection.items:[] ;
+  return respone;
 }
 
 export async function getAllPostsForHome(preview) {

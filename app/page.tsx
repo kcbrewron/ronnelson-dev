@@ -1,17 +1,36 @@
-import Nav from "../components/Nav";
+import { fetchHome, fetchLandingPage } from "../utils/api";
+import HomePage from "../components/HomePage";
 
-export const metadata = {
-  title: "ronnelson.dev",
-  keywords:
-    "software development, coding, tech, outdoor, camping, family, hobbies, adventures, tech gadgets, campsites, hiking, family camping, outdoor family",
-  description:
-    "Explore the world of software development, camping, outdoors, and family with this site. Find tips and recommendations on the best tech gadgets for camping, the best campsites for software developers, and the benefits of being an outdoor family",
-};
+export async function generateMetadata({ params }) {
+  const response = await getData();
+  const landing = response[0] ? response[0] : {};
+  return {
+    title: landing.seoMetadata.seoTitle,
+    description: landing.seoMetadata.seoDescription,
+    keywords: landing.seoMetadata.seoKeywords,
+  };
+}
 
-export default function Page() {
+export async function getData() {
+  const res = await fetchHome();
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res;
+}
+
+export default async function Home() {
+  const res = await getData();
+  console.log(res[0].title);
+  const elements = HomePage(res[0]);
   return (
     <>
-      <h1>Hello, Next.js!</h1>
+      <div className="top-0">{elements}</div>
     </>
   );
 }

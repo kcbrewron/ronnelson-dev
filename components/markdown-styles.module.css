@@ -23,7 +23,7 @@
 }
 
 .markdown h2 {
-  @apply text-3xl mt-8 mb-4 px-10 leading-snug text-electric;
+  @apply text-3xl mt-8 mb-4 text-electric;
 }
 
 .markdown h3 {

@@ -12,13 +12,13 @@ export const metadata = {
 
 export async function getData() {
   const res = await fetchData();
-
+  console.log("Graphql output from github ==" + res);
   return res;
 }
 
 export default async function About() {
   const res = await getData();
-
+  console.log("Graphql output from github ==" + res);
   return (
     <>
       <div className="bg-ghost w-full">

@@ -17,12 +17,12 @@ const nextConfig = {
         port: '',
         pathname: '/u/**'
       },
-      {
-        protocol: 'https',
-        hostname: 'images.ctfassets.net',
-        port: '',
-        pathName: "/2tyl7ps8aucz/**"
-      }
+      // {
+      //   protocol: 'https',
+      //   hostname: 'images.ctfassets.net',
+      //   port: '',
+      //   pathName: "/**"
+      // }
     ],
     loader: 'custom',
     loaderFile: './components/loader.js'

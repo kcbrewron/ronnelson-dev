@@ -3,7 +3,7 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import markdownStyles from "./markdown-styles.module.css";
 
-interface LandingPage {
+interface HomePage {
   title: string;
   category: string;
   heroImage?: Hero;
@@ -64,7 +64,7 @@ function renderOptions(links) {
         const entry = entryMap.get(node.data.target.sys.id);
 
         // render the entries as needed
-        if (entry.__typename === "LandingPage") {
+        if (entry.__typename === "Home") {
           return <a href={`/blog/${entry.slug}`}>{entry.title}</a>;
         }
       },
@@ -116,22 +116,20 @@ function createHeroCaption(title: string) {
 // documentToReactComponents from "@contentful/rich-text-react-renderer"
 /**
  *
- * @param LandingPage Input API response for any landing page
+ * @param HomePage Input API response for any landing page
  * @returns Content layout for a landing page
  */
-export default function LandingPagePost(LandingPage: LandingPage) {
-  console.log("Landing Page -->" + LandingPage.title);
+export default function HomePage(HomePage: HomePage) {
+  console.log("Landing Page -->" + HomePage.title);
   return (
     <>
-      <div className="h-96 relative">
-        {createHeroAsset(LandingPage.heroImage)}
-      </div>
-      {createHeroCaption(LandingPage.title)}
+      <div className="h-96 relative">{createHeroAsset(HomePage.heroImage)}</div>
+      {createHeroCaption(HomePage.title)}
       <div className="container">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
-            LandingPage.content.json,
-            renderOptions(LandingPage.content.links)
+            HomePage.content.json,
+            renderOptions(HomePage.content.links)
           )}
         </div>
       </div>

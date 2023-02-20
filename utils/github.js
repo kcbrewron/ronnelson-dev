@@ -28,16 +28,12 @@ const query=
   }
 }`;
 
-const headers = {
-  'Authorization': 'Bearer `${githubToken}`',
-  'Content-Type': 'application/json'
-};
-
 const variables = {};
 
 const fetchData = async () => {
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer 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");
+  const token=process.env.GITHUB_API_TOKEN
+  myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");
   console.log('requesting data from github');
 
