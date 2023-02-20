@@ -46,27 +46,45 @@ export default function Nav() {
         <div className='cols-span-2 ... text-2xl text-blueJeans pl-4 left-2'>
           [ ronnelson.dev ]
         </div>
-        <div className='col-start-8 ... text-xl text-blueJeans px-4 absolute right-4'>
-          <Link href='/' className='px-4 rounded-md' alt='Home'>
-            
+        <div className='col-start-4 ... text-xl text-blueJeans px-4 absolute right-4'>
+          <Link href='/' 
+            className='px-4 rounded-md underline hover:text-ghost hover:decoration-dashed'
+            alt='Home'>
               Home
           </Link>
           <Link
-            href='/about'
-            className='col-start-9 ...px-4 rounded-md'
-            alt='About Me'
+            href='/leadership'
+            className='px-4 rounded-md underline hover:text-ghost hover:decoration-dashed' 
+            alt='Leadership'
+            aria-label='Leadership'
           >
-          About
+          Leadership
           </Link>
           <Link
-            href='/blog'
-            className='col-start-10 ... px-4 rounded-md'
-            alt='blog'
+            href='/software'
+            className='px-4 rounded-md underline hover:text-ghost hover:decoration-dashed' 
+            alt='Software'
+            aria-label='Software'
           >
-            
-              Blog
-            
+          Software
           </Link>
+          <Link
+            href='/cooking'
+            className='px-4 rounded-md underline hover:text-ghost decoration-dashed' 
+            alt='Cooking'
+            aria-label='Cooking'
+          >
+          Cooking
+          </Link>
+          <Link
+            href='/outdoors'
+            className='px-4 rounded-md underline hover:text-ghost underline decoration-dashed' 
+            alt='Outdoors'
+            aria-label='Outdoors'
+          >
+          Outdoors
+          </Link>
+
         </div>
       </div>
     </div>

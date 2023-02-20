@@ -1,16 +1,18 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from 'next/link';
 
 
-const myLoader = ({ src, width,quality }) => {
-  return `${src}?w=${width}&q=${quality}`;
-};
+// const myLoader = ({ src, width,quality }) => {
+//   return `${src}?w=${width}&q=${quality}`;
+// };
 export default function Profile() {
   return <>
-    <Link href='https://github.com/kcbrewron' className='space-x-1.0' passHref>
-
+  <div  className="inline px-5">
+    <Link href='/about' passHref className="hover:text-ghost">  About Me </Link></div>
+    <div  className="inline px-5">
+    <Link href='https://github.com/kcbrewron' className="hover:text-ghost" passHref>
       <Image
-        loader={myLoader}
+        className="inline"
         src='/github.png'
         placeholder='empty'
         width={16}
@@ -19,14 +21,14 @@ export default function Profile() {
         aria-label='github'
         alt='github logo'
       />Github
-    </Link>
+    </Link></div>
+    <div  className="inline px-5">
     <Link
       href='https://www.linkedin.com/in/kc-ronnelson/'
-      className='px-4 hover:text-ghost'
+      className='hover:text-ghost'
       passHref>
       <Image
-        loader={myLoader}
-        className='space-x-0.5'
+        className="inline"
         placeholder='empty'
         src='/linkedin.png'
         width={16}
@@ -35,13 +37,14 @@ export default function Profile() {
         aria-label='linkedin'
         alt='linkedin logo'
       />LinkedIn
-    </Link>
+    </Link></div>
+    <div className="inline px-5">
     <Link
       href='https://twitter.com/kcbrewron'
-      className='space-x-0.5 hover:text-ghost'
+      className='hover:text-ghost'
       passHref>
       <Image
-        loader={myLoader}
+        className="inline"
         placeholder='empty'
         src='/twitter.png'
         width={16}
@@ -50,6 +53,6 @@ export default function Profile() {
         aria-label='twitter'
         alt='twitter logo'
       />Twitter
-    </Link>
+    </Link></div>
   </>;
 }

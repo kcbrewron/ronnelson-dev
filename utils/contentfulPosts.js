@@ -17,4 +17,5 @@ export async function fetchEntry(entryId) {
   const entry = await client.getEntry(entryId);
   if (entry) return entry;
 }
+
 export default { fetchEntries, fetchEntry };

@@ -10,11 +10,11 @@
     "url": "git@github.com:kcbrewron/ronnelson-dev.git"
   },
   "scripts": {
-    "dev": "npx next dev",
-    "build": "npx next build",
-    "start": "npx next start",
-    "export": "npx next export",
-    "lint": "npx next lint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.2",

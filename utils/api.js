@@ -16,6 +16,73 @@ const POST_GRAPHQL_FIELDS = `
       }
 `;
 
+const LANDING_PAGE_QUERY = `
+      title,
+      category,
+      heroImage{url,width,height,description,title},
+      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
+      slug,
+      content {
+          json
+          links {
+            entries {
+              inline {
+                sys {
+                  id
+                  spaceId
+                  environmentId
+
+                }
+                __typename
+                ... on LandingPage {
+                  title
+                  slug
+                }
+              }
+              block {
+                sys {
+                  id
+                }
+              }
+            }
+          assets{
+            block {
+                sys {
+                  id
+                }
+                url
+                title
+                width
+                height
+                description
+              }}
+          }
+        
+        }
+      }
+    }}`
+/**
+ * TODO move the inital part of the query here so we can use this for
+ * all landing page queries.
+ * 
+ * @param { string } landing 
+ * @param {*} preview 
+ * 
+ * @returns 
+ */
+export async function fetchLandingPage(landing, preview=false){
+ const entries = await fetchGraphQL(
+  `query {
+  landingPageCollection(limit:1,where: { slug_exists: true,category:"${landing}" }) {
+    items{
+      ${LANDING_PAGE_QUERY}`);
+  return extractLandingPage(entries);
+}
+
+function extractLandingPage(fetchResponse){
+  return fetchResponse?.data?.landingPageCollection?.items;
+}
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
@@ -42,6 +109,8 @@ function extractPost(fetchResponse) {
 function extractPostEntries(fetchResponse) {
   return fetchResponse?.data?.postCollection?.items;
 }
+
+
 
 export async function getPreviewPostBySlug(slug) {
   const entry = await fetchGraphQL(
@@ -97,20 +166,4 @@ export async function getPostAndMorePosts(slug, preview) {
     }`,
     preview
   );
-  const entries = await fetchGraphQL(
-    `query {
-      postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
-      preview ? "true" : "false"
-    }, limit: 2) {
-        items {
-          ${POST_GRAPHQL_FIELDS}
-        }
-      }
-    }`,
-    preview
-  );
-  return {
-    post: extractPost(entry),
-    morePosts: extractPostEntries(entries),
-  };
 }
