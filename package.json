@@ -14,7 +14,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "next lint"
+    "lint": "next lint app"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.2",

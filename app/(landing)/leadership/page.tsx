@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function getData(route: string) {
+async function getData(route: string) {
   const res = await fetchLandingPage(route);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

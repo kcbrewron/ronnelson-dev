@@ -7,6 +7,7 @@ const nextConfig = {
     // Will only be available on the server side
     githubToken: process.env.GITHUB_API_TOKEN,
   },
+  pageExtensions: ['ts', 'tsx', 'mdx'],
   reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -17,15 +18,9 @@ const nextConfig = {
         port: '',
         pathname: '/u/**'
       },
-      // {
-      //   protocol: 'https',
-      //   hostname: 'images.ctfassets.net',
-      //   port: '',
-      //   pathName: "/**"
-      // }
     ],
     loader: 'custom',
-    loaderFile: './components/loader.js'
+    loaderFile: '/components/loader.js'
   }
 };
 module.exports = nextConfig;
