@@ -1,8 +1,6 @@
 [build]
   command = "npm run deploy"
   publish = "out"
-[[plugins]]
-package = "netlify-plugin-is-website-vulnerable"
 
 # Use double brackets since `plugins` is an array of tables.
 [[context.production.plugins]]
