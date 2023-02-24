@@ -1,10 +1,13 @@
 module.exports = {
-  purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
-  corePlugins: {
-    placeSelf: false,
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    'app/**/*.{js,ts,jsx,tsx}',
+    'pages/**/*.{js,ts,jsx,tsx}',
+    'components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
+    container:{
+      center: true,
+    },
     gridTemplateColumns: {
       16: "repeat(16, minmax(0, 1fr))",
     },
@@ -15,8 +18,8 @@ module.exports = {
       xl: "1440px",
     },
     fontFamily: {
-      sans: ["Roboto", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      sans: ["Proza Libre", "sans-serif"],
+      serif: ["Rubik", "serif"],
       body: ["Open Sans"],
     },
     fontSize: {
@@ -33,13 +36,6 @@ module.exports = {
       "6xl": "4rem",
       "7xl": "5rem",
     },
-    container: {
-      DEFAULT: "1rem",
-      sm: "2rem",
-      lg: "4rem",
-      xl: "5rem",
-      "2xl": "6rem",
-    },
     colors: {
       ghost: "#F4F4F9",
       charleston: "#182328",
@@ -49,22 +45,13 @@ module.exports = {
       powder: "#B8DBD9",
       deepSpace: "#445A66",
       pewter: "#88A5AB",
-      cadet: "#A6B2BB",
+      picton: "#09a6f3",
       blueRyb: "#0D41E1",
       blueJeans: "#09A6F3",
       vividSky: "#07C8F9",
       gray: "#CED4DA",
       lightGray: "#E9ECEF",
       cultured: "#F8F9FA",
-    },
-    extend: {
-      spacing: {
-        128: "32rem",
-        144: "36rem",
-      },
-      borderRadius: {
-        "4xl": "2rem",
-      },
     },
   },
 };
