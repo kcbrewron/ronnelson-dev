@@ -1,6 +1,7 @@
 import Image from "next/image";
 import fetchData from "../utils/github";
 import { Suspense } from "react";
+import markdownStyles from "./markdown-styles.module.css";
 
 export const metadata = {
   title: "Journey with Me",
