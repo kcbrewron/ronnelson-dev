@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && npm run export"
+  command = "npm run build"
   publish = "out"
 [[plugins]]
 package = "netlify-plugin-is-website-vulnerable"
@@ -11,5 +11,3 @@ package = "@netlify/plugin-sitemap"
 [[plugings]]
 package = "@netlify/plugin-nextjs"
 
-functions = "netlify/functions"
-edge-functions = "netlify/edge-functions"
