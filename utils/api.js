@@ -114,17 +114,22 @@ const LANDING_PAGE_QUERY = `
  * @returns 
  */
 export async function fetchLandingPage(landing, preview=false){
+ let landingPage = landing.substring(0,1).toUpperCase()+landing.substring(1);
+ console.log("Get the landing page for slug: "+landingPage);
  const entries = await fetchGraphQL(
   `query {
-  landingPageCollection(limit:1,where: { slug_exists: true,category:"${landing}" }) {
+  landingPageCollection(limit:1,where: { slug_exists: true,category:"${(landingPage)}" }) {
     items{
-      ${LANDING_PAGE_QUERY}`);
-  return extractLandingPage(entries);
+      ${LANDING_PAGE_QUERY}`).then((res )=> {
+        console.log("Size of response= " +res?.data?.landingPageCollection?.items.length);
+        return res.data.landingPageCollection.items[0];
+      }).catch((err)=>{
+        console.log("An error was received when calling the landing page query "+err);
+      });
+    return entries;
 }
 
-function extractLandingPage(fetchResponse){
-  return fetchResponse?.data?.landingPageCollection?.items;
-}
+
 
 async function fetchGraphQL(query, preview = false) {
   return fetch(
@@ -142,7 +147,10 @@ async function fetchGraphQL(query, preview = false) {
 
       body: JSON.stringify({ query }),
     }
-  ).then((response) => response.json());
+  ).then((response) => response.json())
+  .catch((err)=>{
+    console.log("error message from contentful "+err);
+  });
 }
 
 function extractPost(fetchResponse) {

@@ -20,7 +20,7 @@ const nextConfig = {
       },
     ],
     loader: 'custom',
-    loaderFile: '/components/loader.js'
+    loaderFile: '/utils/loader.js'
   }
 };
 module.exports = nextConfig;

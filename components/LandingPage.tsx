@@ -10,7 +10,6 @@ interface LandingPage {
   seo: SeoMetadata;
   content: Content;
 }
-
 interface Hero {
   url: string;
   description: string;
@@ -26,15 +25,15 @@ interface SeoMetadata {
 }
 
 interface Content {
-  json: Document;
-  links: object;
+  json: any;
+  links: any;
 }
 
 // Create a bespoke renderOptions object to target BLOCKS.EMBEDDED_ENTRY (linked block entries e.g. code blocks)
 // INLINES.EMBEDDED_ENTRY (linked inline entries e.g. a reference to another blog post)
 // and BLOCKS.EMBEDDED_ASSET (linked assets e.g. images)
 
-function renderOptions(links) {
+function renderOptions(links: any) {
   // create an asset map
   const assetMap = new Map();
   // loop through the assets and add them to the map
@@ -59,7 +58,7 @@ function renderOptions(links) {
 
     renderNode: {
       // other options...
-      [INLINES.EMBEDDED_ENTRY]: (node, children) => {
+      [INLINES.EMBEDDED_ENTRY]: (node: any, children: any) => {
         // find the entry in the entryMap by ID
         const entry = entryMap.get(node.data.target.sys.id);
 
@@ -69,7 +68,7 @@ function renderOptions(links) {
         }
       },
 
-      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node: any, next: any) => {
         // find the asset in the assetMap by ID
         const asset = assetMap.get(node.data.target.sys.id);
 
@@ -93,7 +92,7 @@ function renderOptions(links) {
  * @param @type Hero
  * @returns
  */
-function createHeroAsset(hero: Hero) {
+function createHeroAsset(hero: any) {
   return (
     <Image
       src={hero.url}
@@ -121,6 +120,7 @@ function createHeroCaption(title: string) {
  */
 export default function LandingPagePost(LandingPage: LandingPage) {
   console.log("Landing Page -->" + LandingPage.title);
+
   return (
     <>
       <div className="h-96 relative">

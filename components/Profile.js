@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from 'next/link';
 
-
-// const myLoader = ({ src, width,quality }) => {
-//   return `${src}?w=${width}&q=${quality}`;
-// };
 export default function Profile() {
   return <>
   <div  className="inline px-5">

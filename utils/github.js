@@ -35,7 +35,6 @@ const fetchData = async () => {
   const token=process.env.GITHUB_API_TOKEN
   myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");
-  console.log('requesting data from github');
 
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',

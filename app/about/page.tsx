@@ -1,7 +1,7 @@
-import fetchData from "../../utils/github";
 import Image from "next/image";
+import fetchData from "../../utils/github";
+import { Suspense } from "react";
 
-//Metadata for SEO Content
 export const metadata = {
   title: "Journey with Me",
   keywords:
@@ -10,15 +10,17 @@ export const metadata = {
     "Explore the world of software development, camping, outdoors, and family with this site. Find tips and recommendations on the best tech gadgets for camping, the best campsites for software developers, and the benefits of being an outdoor family",
 };
 
-export async function getData() {
+async function getData() {
   const res = await fetchData();
-  console.log("Graphql output from github ==" + res);
-  return res;
+  console.log(res.data.user);
+  return res.data.user.avatarUrl;
 }
+export default async function Home() {
+  const user = await getData().catch((err) => {
+    console.error(err);
+    return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg==";
+  });
 
-export default async function About() {
-  const res = await getData();
-  console.log("Graphql output from github ==" + res);
   return (
     <>
       <div className="bg-ghost w-full">
@@ -29,15 +31,29 @@ export default async function About() {
       <div className="container pt-5">
         <div className="grid grid-cols-9 px-10 mt-16 lg:grid-cols-9 md:grid-cols-6 sm:grid-cols-3">
           <div className="content-center">
+            <Suspense
+              fallback={
+                <Image
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg=="
+                  width={200}
+                  height={200}
+                  alt="placeholder"
+                  className="rounded-full content-center"
+                />
+              }
+            ></Suspense>
             <Image
-              src={res.data.user.avatarUrl}
+              src={user}
               width={200}
               height={200}
               alt="Image of Ron"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg=="
               priority
               className="rounded-full content-center"
             />
           </div>
+
           <div className="p-5 col-span-10 col-start-2 align-middle text-charcoal italic text-xl">
             &quot;There are five important things for living a successful and
             fulfilling life: never stop dreaming, never stop believing, never

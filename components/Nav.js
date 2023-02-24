@@ -77,7 +77,7 @@ export default function Nav() {
           Cooking
           </Link>
           <Link
-            href='/outdoors'
+            href='/outdoor'
             className='px-4 rounded-md underline hover:text-ghost underline decoration-dashed' 
             alt='Outdoors'
             aria-label='Outdoors'

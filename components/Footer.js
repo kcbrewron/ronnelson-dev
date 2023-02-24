@@ -1,11 +1,20 @@
-import Copyright from './Copyright';
 import Profile from './Profile';
 
+export function copyright(){
+  let today = new Date();
+  let currentYear = today.getFullYear();
+  return (<>Ron Nelson &#169; {currentYear}</>);
+}
+
+
 export default function Footer() {
+  let today = new Date();
+  let currentYear = today.getFullYear();
+  const copyright = <>Ron Nelson &#169; {currentYear}</>;
   return (
-    <div className="bottom-0 w-full grid grid-cols-12 py-3 bg-vividSky text-lg text-charleston">
+    <div className="w-full grid grid-cols-12 py-3 bg-vividSky text-lg text-charleston">
       <div className='col-start-1 col-span-2  pl-4 '>
-        <Copyright />
+        {copyright}
       </div>
       <div className='col-start-13 right-0'>
         <Profile />
