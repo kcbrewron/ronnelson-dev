@@ -31,6 +31,7 @@ export default function Profile() {
         height={16}
         quality={100}
         aria-label='linkedin'
+        priority
         alt='linkedin logo'
       />LinkedIn
     </Link></div>

@@ -75,6 +75,7 @@ function renderOptions(links: any) {
         // render the asset accordingly
         return (
           <Image
+            priority
             className="py-5 mx-auto rounded-lg! "
             src={asset.url}
             width={asset.width}
