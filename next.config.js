@@ -21,7 +21,7 @@ const nextConfig = {
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self' 'https://www.ronnelson.dev'; image-src 'https://images.ctfassets.net' 'https://avatars.githubusercontent.com' script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+                "default-src 'self' 'https://www.ronnelson.dev'; image-src 'https://images.ctfassets.net' 'https://avatars.githubusercontent.com'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
             },
             {
               key: 'X-Content-Type-Options',
