@@ -1,15 +1,15 @@
 .markdown {
-  @apply text-lg leading-relaxed text-charcoal
+  @apply text-lg leading-relaxed text-black
 }
 .markdown hr{
-  @apply w-48 h-1 mx-auto my-4 bg-picton border-0 rounded md:my-10
+  @apply w-48 h-1 mx-auto my-4 bg-fireEngine border-0 rounded md:my-10
 }
 .markdown p {
   @apply divide-y divide-dashed py-5
 }
 
 .markdown a {
-  @apply text-picton underline 
+  @apply text-lapisBlue underline 
 }
 
 .markdown img {
@@ -19,22 +19,22 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-4 text-charcoal px-10;
+  @apply my-4 text-black px-10;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-8 mb-4 text-electric;
+  @apply text-3xl mt-8 mb-4 text-lapisBlue;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 px-10 leading-snug text-electric;
+  @apply text-2xl mt-8 mb-4 px-10 leading-snug text-lapisBlue;
 }
 
 .markdown h4 {
-  @apply text-xl mt-8 mb-4 px-10 leading-snug text-electric;
+  @apply text-xl mt-8 mb-4 px-10 leading-snug text-lapisBlue;
 }
 
 .markdown h5 {
-  @apply text-xl mt-8 mb-4 px-10 leading-snug text-charcoal;
+  @apply text-xl mt-8 mb-4 px-10 leading-snug text-lapisBlue;
 }
 

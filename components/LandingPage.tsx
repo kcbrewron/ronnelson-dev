@@ -107,7 +107,7 @@ function createHeroAsset(hero: any) {
 
 function createHeroCaption(title: string) {
   return (
-    <div className="bg-ghost w-full">
+    <div className="bg-white w-full">
       <p className="text-4xl bold text-center p-10 font-semibold">{title}</p>
     </div>
   );
