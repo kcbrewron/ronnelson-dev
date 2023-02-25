@@ -9,6 +9,32 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx', 'mdx'],
   reactStrictMode: true,
+  async headers() {
+    return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'Content-Security-Policy',
+              value:
+                "default-src 'self' 'https://www.ronnelson.dev'; image-src 'https://images.ctfassets.net' 'https://avatars.githubusercontent.com'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+            },
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'Referrer-Policy',
+              value: 'origin-when-cross-origin',
+            },
+          ],
+        },
+      ];
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns:[
