@@ -1,6 +1,3 @@
-[build]
-  command = "npm run deploy"
-
 # Use double brackets since `plugins` is an array of tables.
 [[context.production.plugins]]
 package = "@netlify/plugin-sitemap"
