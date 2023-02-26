@@ -117,7 +117,7 @@ export default function Nav() {
           <div className="md:hidden flex items-center text-indigoBlue">
             <button
               className="mobile-menu-button px-2"
-              garia-label="menu"
+              aria-label="menu"
               onClick={openMenu}
             >
               <Bars3Icon
