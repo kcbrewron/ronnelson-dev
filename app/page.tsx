@@ -1,6 +1,5 @@
 import Image from "next/image";
 import fetchData from "../utils/github";
-import "../styles/globals.css";
 
 export const metadata = {
   title: "Journey with Me",
@@ -52,7 +51,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div id="bio" className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
+      <div id="bio" className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">
         <p>
           Hi there! I&apos;m Ron, application developer and solution architect
           with over 15 years of experience in the financial services sector. I

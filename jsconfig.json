@@ -5,6 +5,8 @@
       "@components/*": ["/components/*"],
       "@styles/*": ["/styles/*"],
       "@utils/*": ["/utils/*"]
-    }
+    },
+    "exclude": ["node_modules",".next"],
+    "include": ["app/**/*", "components/**/*"]
   }
 }
