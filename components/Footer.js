@@ -17,26 +17,26 @@ export default function Footer() {
 
         {/* profile links */}
         <div className="md:flex items-center space-x-4">
-          <Link href="/about" passHref className="hover:hover:text-bus p-2">
+          <Link href="/about" passHref className="hover:hover:text-bus p-4">
             About Me
           </Link>
           <Link
             href="https://github.com/kcbrewron"
-            className="hover:hover:text-bus p-2"
+            className="hover:hover:text-bus p-4"
             passHref
           >
             Github
           </Link>
           <Link
             href="https://www.linkedin.com/in/kc-ronnelson/"
-            className="hover:text-bus p-2"
+            className="hover:text-bus p-4"
             passHref
           >
             LinkedIn
           </Link>
           <Link
             href="https://twitter.com/kcbrewron"
-            className="hover:text-bus p-2"
+            className="hover:text-bus p-4"
             passHref
           >
             Twitter
