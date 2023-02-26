@@ -1,6 +1,5 @@
 import Image from "next/image";
 import fetchData from "../utils/github";
-import "./globals.css";
 
 export const metadata = {
   title: "Journey with Me",
@@ -14,7 +13,7 @@ async function getData() {
   const res = await fetchData();
   return res.data.user.avatarUrl;
 }
-export default async function Home() {
+export default async function Page() {
   const user = await getData()
     .then((user) => {
       return user;
