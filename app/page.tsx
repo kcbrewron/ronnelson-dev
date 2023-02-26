@@ -1,6 +1,5 @@
 import Image from "next/image";
 import fetchData from "../utils/github";
-import "../styles/globals.css";
 
 export const metadata = {
   title: "Journey with Me",
@@ -12,35 +11,36 @@ export const metadata = {
 
 async function getData() {
   const res = await fetchData();
-  console.log(res.data.user);
   return res.data.user.avatarUrl;
 }
-export default async function Home() {
-  const user = await getData().catch((err) => {
-    console.error(err);
-    return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg==";
-  });
-
+export default async function Page() {
+  const user = await getData()
+    .then((user) => {
+      return user;
+    })
+    .catch((err) => {
+      return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg==";
+    });
   return (
     <>
       {/*page title*/}
       <div className="w-full bg-fireEngine mx-auto">
-        <p className="text-4xl bold text-center p-10 font-semibold">
+        <div className="text-4xl bold text-center p-10 font-semibold">
           Welcome to my Journey
-        </p>
+        </div>
       </div>
 
       {/* avatar and quote */}
       <div className="flex justify-between max-w-2xl space-x-4 mx-auto">
-        <div className="py-4 justify-between">
+        <div className="py-8 justify-between px-2">
           <Image
             src={user}
-            width={600}
+            width={300}
             height={200}
+            priority
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg=="
             alt="Image of Ron"
             placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg=="
-            priority
             className="rounded-full"
           />
         </div>
@@ -52,34 +52,37 @@ export default async function Home() {
         </div>
       </div>
 
-      <div id="bio" className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
-        <p>
+      <div
+        id="bio"
+        className="md:w-3/4 sm:max-w-full px-4 space-y-4 mx-auto text-xl pb-4"
+      >
+        <div>
           Hi there! I&apos;m Ron, application developer and solution architect
           with over 15 years of experience in the financial services sector. I
           live in the midwest and my family includes my wife, two kids, as of
           writing this three dogs.
-        </p>
-        <p>
+        </div>
+        <div>
           Throughout my career, I&apos;ve worked extensively with a range of
           programming languages and technologies, including Java, Spring Boot,
           Informatica, JavaScript, Node.js, Next.js, React, and Python. I&apos;m
           passionate about using technology to solve real-world problems and
           have a proven track record of delivering high-quality software
           solutions.
-        </p>
-        <p>
+        </div>
+        <div>
           When I&apos;m not working, I enjoy spending time with my family,
           whether we&apos;re hiking, camping, or just taking a walk in the park.
           We love to get outside and explore our area as well as those great
           parks and areas to explore around the country. Our kids and dogs love
           to get outside with us and take a walk, run free, or just lounge
           around in the sun.
-        </p>
-        <p>
+        </div>
+        <div>
           In my free time, I also love experimenting with new technologies and
           contributing to open-source projects. I&apos;m always looking for new
           challenges and opportunities to expand my skill set.
-        </p>
+        </div>
       </div>
     </>
   );

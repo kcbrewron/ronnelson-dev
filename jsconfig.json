@@ -2,9 +2,10 @@
   "compilerOptions": {
     "jsx": "react",
     "paths": {
-      "@components/*": ["/components/*"],
-      "@styles/*": ["/styles/*"],
-      "@utils/*": ["/utils/*"]
-    }
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "exclude": ["node_modules"],
   }
 }

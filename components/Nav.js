@@ -1,8 +1,12 @@
 "use client";
 import Link from "next/link";
 import Head from "next/head";
-import { CodeBracketSquareIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
-import {useState} from "react";
+import {
+  CodeBracketSquareIcon,
+  XMarkIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/solid";
+import { useState } from "react";
 
 const head = function () {
   return (
@@ -51,33 +55,36 @@ export default function Nav() {
   const [menuState, setMenuState] = useState(false);
   function openMenu() {
     console.log("showMenu");
-    if(menuState ? setMenuState(false) : setMenuState(true));
+    if (menuState ? setMenuState(false) : setMenuState(true));
   }
   return (
     <nav>
       <div className="w-full border-b-indigoBlue border-b-4 mx-auto text-indigoBlue">
         <div className="px-8 flex justify-between">
           {/* logo navigation */}
-            <div className="flex">
-              <Link href="/" className="flex items-center py-4 hover:text-lapisBlue">
-                <CodeBracketSquareIcon className="h-6 w-6 mr-1 text-indigoBlue" />
-                <span className="font-bold">ronnelson.dev</span>
-              </Link>
-            </div>
+          <div className="flex">
+            <Link
+              href="/"
+              className="flex items-center py-4 hover:text-lapisBlue"
+            >
+              <CodeBracketSquareIcon className="h-6 w-6 mr-1 text-indigoBlue" />
+              <span className="font-bold">ronnelson.dev</span>
+            </Link>
+          </div>
           <div className="flex space-x-4">
             {/* primary navigation */}
             <div className="hidden md:flex items-center space-x-3">
               <Link
                 className="block py-4 px-4 hover:text-lapisBlue"
-                href="/leadership"
+                href="/blog/leadership"
                 alt="leadership"
                 aria-label="leadership"
               >
                 Leadership
               </Link>
               <Link
-                className="block py-2 px-4 hover:text-lapisBlue"
-                href="/outdoor"
+                className="block py-4 px-4 hover:text-lapisBlue"
+                href="/blog/outdoor"
                 alt="outdoor"
                 aria-label="outdoor"
               >
@@ -85,18 +92,15 @@ export default function Nav() {
               </Link>
               <Link
                 className="block py-4 px-4 hover:text-lapisBlue"
-                href="/cooking"
+                href="/blog/cooking"
                 alt="cooking"
                 aria-label="cooking"
               >
                 Cooking
               </Link>
             </div>
-
-            
           </div>
 
-          
           {/* secondary navigation */}
           <div className="hidden md:flex items-center space-x-2">
             <Link
@@ -110,50 +114,46 @@ export default function Nav() {
           </div>
 
           {/* Mobile responsive menu here */}
-          <div class="md:hidden flex items-center text-indigoBlue">
-              <button className="mobile-menu-button px-2" role='menu' aria-label="menu" onClick={openMenu}>
-                <Bars3Icon className={!menuState ? "visible h-6 w-6": "hidden"} />
-                <XMarkIcon className={menuState ? "visible h-6 w-6": "hidden"} />
-              </button>
+          <div className="md:hidden flex items-center text-indigoBlue">
+            <button
+              className="mobile-menu-button px-2"
+              aria-label="menu"
+              onClick={openMenu}
+            >
+              <Bars3Icon
+                className={!menuState ? "visible h-6 w-6" : "hidden"}
+              />
+              <XMarkIcon className={menuState ? "visible h-6 w-6" : "hidden"} />
+            </button>
           </div>
-
         </div>
       </div>
       {/* mobile */}
-      <div class={menuState ? "visible transition duration-500": "hidden"}>
+      <div className={menuState ? "visible transition duration-500" : "hidden"}>
         <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
-                href="home"
-                alt="home"
-                aria-label="home"
-              >
-                Home
-              </Link>
-              
+          className="block py-4 px-4 hover:text-lapisBlue"
+          href="/blog/leadership"
+          alt="leadership"
+          aria-label="leadership"
+        >
+          Leadership
+        </Link>
         <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
-                href="/leadership"
-                alt="leadership"
-                aria-label="leadership"
-              >
-                Leadership
-              </Link>
-              <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
-                href="/outdoor"
-                alt="outdoor"
-                aria-label="outdoor"
-              >
-                Outdoors
-              </Link>
-              <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
-                href="/cooking"
-                alt="cooking"
-                aria-label="cooking"
-              >
-                Cooking
-              </Link>
+          className="block py-4 px-4 hover:text-lapisBlue"
+          href="/blog/outdoor"
+          alt="outdoor"
+          aria-label="outdoor"
+        >
+          Outdoors
+        </Link>
+        <Link
+          className="block py-4 px-4 hover:text-lapisBlue"
+          href="/blog/cooking"
+          alt="cooking"
+          aria-label="cooking"
+        >
+          Cooking
+        </Link>
       </div>
     </nav>
   );

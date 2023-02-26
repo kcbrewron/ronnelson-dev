@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 //import type { Metadata } from "next";
 
 async function getData(route: string) {
-  console.log("Requesting for route " + route);
   const pageContent = await fetchLandingPage(route).catch((err) => {
     console.log("Error retrieving content " + err);
   });

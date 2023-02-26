@@ -1,8 +1,3 @@
-import getConfig from 'next/config'
-
-const token = process.env.GITHUB_API_TOKEN
-//const githubToken = serverRuntimeConfig.githubToken;
-
 const query= 
 `query GetMyProfile {
   user(login: "kcbrewron") {
