@@ -33,10 +33,12 @@ export default async function Home() {
       {/* avatar and quote */}
       <div className="flex justify-between max-w-2xl space-x-4 mx-auto">
         <div className="py-8 justify-between px-2">
-          <img
+          <Image
             src={user}
             width={300}
             height={200}
+            priority
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUUNaoBwABogDkC7u/YgAAAABJRU5ErkJggg=="
             alt="Image of Ron"
             placeholder="blur"
             className="rounded-full"
@@ -50,7 +52,10 @@ export default async function Home() {
         </div>
       </div>
 
-      <div id="bio" className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
+      <div
+        id="bio"
+        className="md:w-3/4 sm:max-w-full px-4 space-y-4 mx-auto text-xl pb-4"
+      >
         <div>
           Hi there! I&apos;m Ron, application developer and solution architect
           with over 15 years of experience in the financial services sector. I
