@@ -122,6 +122,7 @@ export async function fetchLandingPage(landing, preview=false){
     items{
       ${LANDING_PAGE_QUERY}`).then((res )=> {
         console.log("Size of response= " +res?.data?.landingPageCollection?.items.length);
+        console.log('returning %s items in the landing page collection' +res.data.landingPageCollection.items[0])
         return res.data.landingPageCollection.items[0];
       }).catch((err)=>{
         console.log("An error was received when calling the landing page query "+err);

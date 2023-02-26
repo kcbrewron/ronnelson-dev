@@ -23,10 +23,11 @@ const securityHeaders = [{
   key: 'Permissions-Policy',
   value: 'geolocation=()'
 },
-{
-  key: 'Content-Security-Policy',
-  value: `default-src 'self'; script-src 'self'; script-src-elem 'self'; script-src-attr 'self'; style-src 'self' https://fonts.googleapis.com/; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com/; style-src-attr 'self' 'unsafe-inline' https://fonts.googleapis.com/; img-src 'self' data: https://images.ctfassets.net https://avatars.githubusercontent.com; font-src 'self' data: https://fonts.googleapis.com/ https://fonts.gstatic.com; upgrade-insecure-requests`
-}];
+// {
+//   key: 'Content-Security-Policy',
+//   value: `default-src 'self'; script-src 'self' 'unsafe-eval';  script-src-elem 'self' 'unsafe-inline'; script-src-attr 'self' 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com/; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com/; style-src-attr 'self' 'unsafe-inline' https://fonts.googleapis.com/; img-src 'self' data: https://images.ctfassets.net https://avatars.githubusercontent.com; font-src 'self' data: https://fonts.googleapis.com/ https://fonts.gstatic.com; upgrade-insecure-requests`
+// }
+];
 
 const nextConfig = {
   experimental: {

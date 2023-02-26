@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import Head from "next/head";
-import { CodeBracketIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
-import React, {useState} from "react";
+import { CodeBracketSquareIcon, XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import {useState} from "react";
 
 const head = function () {
   return (
@@ -55,19 +55,19 @@ export default function Nav() {
   }
   return (
     <nav>
-      <div className="max-w-full border-b-indigoBlue border-b-4 mx-auto text-indigoBlue">
+      <div className="w-full border-b-indigoBlue border-b-4 mx-auto text-indigoBlue">
         <div className="px-8 flex justify-between">
           {/* logo navigation */}
             <div className="flex">
               <Link href="/" className="flex items-center py-4 hover:text-lapisBlue">
-                <CodeBracketIcon className="h-6 w-6 mr-1 text-indigoBlue" />
+                <CodeBracketSquareIcon className="h-6 w-6 mr-1 text-indigoBlue" />
                 <span className="font-bold">ronnelson.dev</span>
               </Link>
             </div>
           <div className="flex space-x-4">
             {/* primary navigation */}
             <div className="hidden md:flex items-center space-x-3">
-              <Link
+              {/*<Link
                 className="block py-4 px-4 hover:text-lapisBlue"
                 href="home"
                 alt="home"
@@ -75,7 +75,7 @@ export default function Nav() {
               >
                 Home
               </Link>
-              
+  */}
               <Link
                 className="block py-4 px-4 hover:text-lapisBlue"
                 href="/leadership"
@@ -109,7 +109,7 @@ export default function Nav() {
           {/* secondary navigation */}
           <div className="hidden md:flex items-center space-x-2">
             <Link
-              className="py-1 px-2 bg-indigoBlue text-white rounded-md hover:bg-lapisBlue hover:text-white transition duration-300 hidden"
+              className="hidden py-1 px-2 bg-indigoBlue text-white rounded-md hover:bg-lapisBlue hover:text-white transition duration-300"
               href="signup"
               alt="signup"
               aria-label="sign up"

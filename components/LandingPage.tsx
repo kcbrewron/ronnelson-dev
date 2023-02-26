@@ -97,20 +97,16 @@ function createHeroAsset(hero: any) {
   return (
     <Image
       src={hero.url}
-      fill
       alt={hero.description}
-      sizes="100vw"
+      width={1920}
+      height={370}
       quality={75}
     />
   );
 }
 
 function createHeroCaption(title: string) {
-  return (
-    <div className="bg-white w-full">
-      <p className="text-4xl bold text-center p-10 font-semibold">{title}</p>
-    </div>
-  );
+  return <p>{title}</p>;
 }
 // Render post.body.json to the DOM using
 // documentToReactComponents from "@contentful/rich-text-react-renderer"
@@ -123,12 +119,14 @@ export default function LandingPagePost(LandingPage: LandingPage) {
   console.log("Landing Page -->" + LandingPage.title);
 
   return (
-    <>
-      <div className="h-96 relative">
+    <div className="w-full mx-auto">
+      <div className="border-b-2 border-b-bus">
         {createHeroAsset(LandingPage.heroImage)}
       </div>
-      {createHeroCaption(LandingPage.title)}
-      <div className="container">
+      <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
+        {LandingPage.title}
+      </div>
+      <div className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
             LandingPage.content.json,
@@ -136,6 +134,6 @@ export default function LandingPagePost(LandingPage: LandingPage) {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
