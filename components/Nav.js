@@ -67,15 +67,6 @@ export default function Nav() {
           <div className="flex space-x-4">
             {/* primary navigation */}
             <div className="hidden md:flex items-center space-x-3">
-              {/*<Link
-                className="block py-4 px-4 hover:text-lapisBlue"
-                href="home"
-                alt="home"
-                aria-label="home"
-              >
-                Home
-              </Link>
-  */}
               <Link
                 className="block py-4 px-4 hover:text-lapisBlue"
                 href="/leadership"
