@@ -1,23 +1,48 @@
-import Profile from './Profile';
-
-export function copyright(){
-  let today = new Date();
-  let currentYear = today.getFullYear();
-  return (<>Ron Nelson &#169; {currentYear}</>);
-}
-
+//import Profile from "./Profile";
+import Link from 'next/link';
+import { CodeBracketIcon } from "@heroicons/react/24/solid";
 
 export default function Footer() {
   let today = new Date();
-  let currentYear = today.getFullYear();
-  const copyright = <>Ron Nelson &#169; {currentYear}</>;
   return (
-    <div className="w-full grid grid-cols-12 py-3 bg-vividSky text-lg text-charleston">
-      <div className='col-start-1 col-span-2  pl-4 '>
-        {copyright}
-      </div>
-      <div className='col-start-13 right-0'>
-        <Profile />
+    <div className="w-full bg-indigoBlue mx-auto text-white">
+      <div className="px-8 flex justify-between">
+        {/* copy right information */}
+        <div className="flex">
+          <div className="flex space-x-2 py-3 text-md text-white">
+            <CodeBracketIcon className="h-6 w-6 mr-1 text-white" />
+            Ron Nelson &#169; {today.getFullYear()}
+          </div>
+        </div>
+
+        {/* profile links */}
+        <div className="md:flex items-center space-x-4">
+          <Link href="/about" passHref className="hover:hover:text-bus">
+            {" "}
+            About Me{" "}
+          </Link>
+          <Link
+            href="https://github.com/kcbrewron"
+            className="hover:hover:text-bus"
+            passHref
+          >
+            Github
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/kc-ronnelson/"
+            className="hover:text-bus"
+            passHref
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="https://twitter.com/kcbrewron"
+            className="hover:text-bus"
+            passHref
+          >
+            Twitter
+          </Link>
+        </div>
       </div>
     </div>
   );

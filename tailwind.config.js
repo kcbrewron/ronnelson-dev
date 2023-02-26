@@ -12,10 +12,11 @@ module.exports = {
       16: "repeat(16, minmax(0, 1fr))",
     },
     screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      xs: "0px",
+      sm: "600px",
+      md: "900px",
+      lg: "1200px",
+      xl: "1536px",
     },
     fontFamily: {
       sans: ["Proza Libre", "sans-serif"],
@@ -37,21 +38,12 @@ module.exports = {
       "7xl": "5rem",
     },
     colors: {
-      ghost: "#F4F4F9",
-      charleston: "#182328",
-      black: "#000000",
-      charcoal: "#2F4550",
-      electric: "#586F7C",
-      powder: "#B8DBD9",
-      deepSpace: "#445A66",
-      pewter: "#88A5AB",
-      picton: "#09a6f3",
-      blueRyb: "#0D41E1",
-      blueJeans: "#09A6F3",
-      vividSky: "#07C8F9",
-      gray: "#CED4DA",
-      lightGray: "#E9ECEF",
-      cultured: "#F8F9FA",
+      black: "#020100",
+      bus: "#F1D302",
+      fireEngine: "#C1292E",
+      lapisBlue: "#235789", //use for button hover
+      indigoBlue: "#1D4972", //use for buttons
+      white: "#FDFFFC"
     },
   },
 };
