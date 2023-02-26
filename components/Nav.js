@@ -111,7 +111,7 @@ export default function Nav() {
 
           {/* Mobile responsive menu here */}
           <div class="md:hidden flex items-center text-indigoBlue">
-              <button className="mobile-menu-button px-2" onClick={openMenu}>
+              <button className="mobile-menu-button px-2" role={menu} aria-label="menu" onClick={openMenu}>
                 <Bars3Icon className={!menuState ? "visible h-6 w-6": "hidden"} />
                 <XMarkIcon className={menuState ? "visible h-6 w-6": "hidden"} />
               </button>
