@@ -94,6 +94,7 @@ function renderOptions(links: any) {
  * @returns
  */
 function createHeroAsset(hero: any) {
+  console.log("Entered create Hero function with url %s ", hero.url);
   return (
     <Image
       src={hero.url}
@@ -106,7 +107,7 @@ function createHeroAsset(hero: any) {
 }
 
 function createHeroCaption(title: string) {
-  return <p>{title}</p>;
+  return <div>{title}</div>;
 }
 // Render post.body.json to the DOM using
 // documentToReactComponents from "@contentful/rich-text-react-renderer"

@@ -3,9 +3,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "mdx"],
-  
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
