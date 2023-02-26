@@ -127,7 +127,7 @@ export default function LandingPagePost(LandingPage: LandingPage) {
       <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
         {LandingPage.title}
       </div>
-      <div className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
+      <div className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
             LandingPage.content.json,
