@@ -1,6 +1,6 @@
 import Image from "next/image";
 import fetchData from "../utils/github";
-import { Suspense } from "react";
+import "../styles/globals.css";
 
 export const metadata = {
   title: "Journey with Me",
