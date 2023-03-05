@@ -101,6 +101,7 @@ function createHeroAsset(hero: any) {
       width={1920}
       height={370}
       quality={75}
+      priority
     />
   );
 }
