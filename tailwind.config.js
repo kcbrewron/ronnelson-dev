@@ -12,13 +12,6 @@ module.exports = {
     gridTemplateColumns: {
       16: "repeat(16, minmax(0, 1fr))",
     },
-    screens: {
-      xs: "0px",
-      sm: "600px",
-      md: "900px",
-      lg: "1200px",
-      xl: "1536px",
-    },
     fontFamily: {
       sans: ["Proza Libre", "sans-serif"],
       serif: ["Rubik", "serif"],
@@ -44,7 +37,10 @@ module.exports = {
       fireEngine: "#C1292E",
       lapisBlue: "#235789", //use for button hover
       indigoBlue: "#1D4972", //use for buttons
-      white: "#FDFFFC"
+      white: "#FDFFFC",
+      shadow: "#e6ebef"
     },
+    extend:{
+    }
   },
 };

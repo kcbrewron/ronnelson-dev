@@ -14,6 +14,7 @@ export default function NotFound() {
           width={400}
           height={200}
           quality={100}
+          priority
         />
       </div>
       <div className="text-2xl text-charleston w-96 justify-self-center">

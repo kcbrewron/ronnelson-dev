@@ -9,7 +9,10 @@
 }
 
 .markdown a {
-  @apply text-lapisBlue underline 
+  @apply text-lapisBlue 
+}
+.markdown a:hover{
+  @apply text-fireEngine
 }
 
 .markdown img {

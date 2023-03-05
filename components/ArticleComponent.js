@@ -1,9 +1,11 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Link from "next/link";
 import markdownStyles from "./markdown-styles.module.css";
-
-interface LandingPage {
+import HeroComponent from "./HeroComponent";
+/*
+interface ArticlePage {
   title: string;
   category: string;
   heroImage?: Hero;
@@ -28,12 +30,12 @@ interface Content {
   json: any;
   links: any;
 }
-
+*/
 // Create a bespoke renderOptions object to target BLOCKS.EMBEDDED_ENTRY (linked block entries e.g. code blocks)
 // INLINES.EMBEDDED_ENTRY (linked inline entries e.g. a reference to another blog post)
 // and BLOCKS.EMBEDDED_ASSET (linked assets e.g. images)
 
-function renderOptions(links: any) {
+function renderOptions(links) {
   // create an asset map
   const assetMap = new Map();
   // loop through the assets and add them to the map
@@ -58,7 +60,7 @@ function renderOptions(links: any) {
 
     renderNode: {
       // other options...
-      [INLINES.EMBEDDED_ENTRY]: (node: any, children: any) => {
+      [INLINES.EMBEDDED_ENTRY]: (node, children) => {
         // find the entry in the entryMap by ID
         const entry = entryMap.get(node.data.target.sys.id);
 
@@ -68,7 +70,7 @@ function renderOptions(links: any) {
         }
       },
 
-      [BLOCKS.EMBEDDED_ASSET]: (node: any, next: any) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
         // find the asset in the assetMap by ID
         const asset = assetMap.get(node.data.target.sys.id);
 
@@ -79,7 +81,7 @@ function renderOptions(links: any) {
             className="py-5 mx-auto rounded-lg! "
             src={asset.url}
             width={asset.width}
-            height={500}
+            height={200}
             alt={asset.title}
             quality={100}
           />
@@ -93,44 +95,48 @@ function renderOptions(links: any) {
  * @param @type Hero
  * @returns
  */
-function createHeroAsset(hero: any) {
+function createHeroAsset(hero) {
   return (
     <Image
       src={hero.url}
       alt={hero.description}
       width={1920}
-      height={370}
+      height={hero.height}
       quality={75}
     />
   );
 }
 
-function createHeroCaption(title: string) {
-  return <div>{title}</div>;
-}
 // Render post.body.json to the DOM using
 // documentToReactComponents from "@contentful/rich-text-react-renderer"
 /**
  *
- * @param LandingPage Input API response for any landing page
+ * @param ArticlePage Input API response for any landing page
  * @returns Content layout for a landing page
  */
-export default function LandingPagePost(LandingPage: LandingPage) {
+export default function ArticlePage(ArticlePage) {
+  //const heroComponent = HeroComponent(ArticlePage.hero)
   return (
-    <div className="w-full mx-auto">
-      <div className="border-b-2 border-b-bus">
-        {createHeroAsset(LandingPage.heroImage)}
+    <div className="space-y-6">
+      <div className="relative w-full h-96">
+        <Image
+          src={ArticlePage.hero.heroImage.url}
+          alt={ArticlePage.hero.heroImage.description}
+          fill
+          quality={100}
+          priority
+          className="opacity-20  object-fit z-0"
+        />
       </div>
-      <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
-        {LandingPage.title}
-      </div>
-      <div className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">
-        <div className={markdownStyles["markdown"]}>
-          {documentToReactComponents(
-            LandingPage.content.json,
-            renderOptions(LandingPage.content.links)
-          )}
-        </div>
+      <div className="w-1/8 space-x-2 space-y-6 place-items-end z-10">
+        <p className="text-3xl">{ArticlePage.title}</p>
+        <p className="text-xl">{ArticlePage.hero.caption}</p>
+        <Link className="bg-lapisBlue px-4 py-2 mt-6 drop-shadow-md
+              hover:bg-indigoBlue 
+              hover:drop-shadow-lg 
+              rounded-md text-white" href="/">
+          {ArticlePage.hero.cta} Docs
+        </Link>
       </div>
     </div>
   );

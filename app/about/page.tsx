@@ -12,7 +12,6 @@ export const metadata = {
 
 async function getData() {
   const res = await fetchData();
-  console.log(res.data.user);
   return res.data.user.avatarUrl;
 }
 export default async function Home() {
@@ -31,7 +30,7 @@ export default async function Home() {
       </div>
 
       {/* avatar and quote */}
-      <div className="flex justify-between max-w-2xl space-x-4 mx-auto">
+      <div className="flex justify-between max-w-2xl space-x-4 mx-auto bg-shadow drop-shadow-md my-4">
         <div className="py-4 justify-between">
           <Image
             src={user}
