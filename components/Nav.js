@@ -61,10 +61,7 @@ export default function Nav() {
         <div className="flex justify-between ml-4">
           {/* logo navigation */}
           <div className="flex py-4  text-indigoBlue hover:text-fireEngine">
-            <Link
-              href="/"
-              className="flex items-center "
-            >
+            <Link href="/" className="flex items-center ">
               <CodeBracketSquareIcon className="h-6 w-6 mr-1" />
               <span className="font-bold">ronnelson.dev</span>
             </Link>
@@ -127,7 +124,7 @@ export default function Nav() {
               onClick={openMenu}
             >
               <Bars3Icon
-                className={!menuState ? "visible h-6 w-6" : "hidden"}
+                className={!menuState ? "visible h-6 w-6 hover:text-fireEngine" : "hidden"}
               />
               <XMarkIcon className={menuState ? "visible h-6 w-6" : "hidden"} />
             </button>
@@ -135,9 +132,15 @@ export default function Nav() {
         </div>
       </div>
       {/* mobile */}
-      <div className={menuState ? "visible justify-between transition duration-700" : "hidden"}>
+      <div
+        className={
+          menuState
+            ? "visible justify-between text-right transition duration-700"
+            : "hidden"
+        }
+      >
         <Link
-          className="block text-right py-4 px-4 hover:text-lapisBlue"
+          className="block py-4 px-4 hover:text-fireEngine "
           href="/"
           alt="home"
           aria-label="home"
@@ -146,7 +149,7 @@ export default function Nav() {
           Home
         </Link>
         <Link
-          className="block text-right py-4 px-4 hover:text-lapisBlue"
+          className="block hover:text-fireEngine  py-4 px-4"
           href="/blog/leadership"
           alt="leadership"
           aria-label="leadership"
@@ -155,7 +158,7 @@ export default function Nav() {
           Leadership
         </Link>
         <Link
-          className="block text-right py-4 px-4 hover:text-lapisBlue"
+          className="block py-4 px-4 hover:text-fireEngine  "
           href="/blog/outdoor"
           alt="outdoor"
           aria-label="outdoor"
@@ -164,7 +167,7 @@ export default function Nav() {
           Outdoors
         </Link>
         <Link
-          className="block text-right py-4 px-4 hover:text-lapisBlue"
+          className="block hover:text-fireEngine  py-4 px-4 "
           href="/blog/cooking"
           alt="cooking"
           aria-label="cooking"
