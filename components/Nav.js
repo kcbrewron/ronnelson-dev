@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import {
-  CodeBracketSquareIcon,
+  Square3Stack3DIcon,
   XMarkIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
@@ -62,7 +62,7 @@ export default function Nav() {
           {/* logo navigation */}
           <div className="flex py-4  text-indigoBlue hover:text-fireEngine">
             <Link href="/" className="flex items-center ">
-              <CodeBracketSquareIcon className="h-6 w-6 mr-1" />
+              <Square3Stack3DIcon className="h-6 w-6 mr-1" />
               <span className="font-bold">ronnelson.dev</span>
             </Link>
           </div>

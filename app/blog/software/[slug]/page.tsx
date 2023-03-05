@@ -1,7 +1,7 @@
 import { getArticleBySlug } from "utils/api";
 import ArticleComponent from "@/components/ArticleComponent";
 import { notFound } from "next/navigation";
-//import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 async function getData(route: string) {
   const pageContent = await getArticleBySlug(route).catch((err) => {
@@ -9,23 +9,25 @@ async function getData(route: string) {
   });
   return pageContent;
 }
-/*
-export async function generateMetadata(params: {
-  slug: string;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
 }): Promise<Metadata> {
   console.log("Get metadata for " + params);
   const response = await getData(params.slug);
-  const landing = response.seoMetadata ? response.seoMetadata : {};
-  console.log("Keys inside the seoMetadata object %s", Object.keys(landing));
-  const title = landing.seoTitle || "";
-  const description = landing.seoDescription || "";
-  const keywords = landing.seoKeywords || "";
+  const metaData = response.seoMetadata ? response.seoMetadata : {};
+  console.log(metaData);
+  const title = metaData.seoTitle || "";
+  const description = metaData.seoDescription || "";
+  const keywords = metaData.seoKeywords || "";
   return {
     title: title,
     description: description,
     keywords: keywords,
   };
-}*/
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   //trying to get route for landing pages since the layout and code is the same.

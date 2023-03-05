@@ -1,6 +1,6 @@
 //import Profile from "./Profile";
 import Link from "next/link";
-import { CodeBracketIcon } from "@heroicons/react/24/solid";
+import { Square3Stack3DIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
 export default function Footer() {
@@ -11,7 +11,7 @@ export default function Footer() {
         {/* copy right information */}
         <div className="flex">
           <div className="flex space-x-2 ml-4 py-3 text-md text-white">
-            <CodeBracketIcon className="h-6 w-6 text-white" />
+            <Square3Stack3DIcon className="h-6 w-6 text-white" />
             <p>Ron Nelson &#169; {today.getFullYear()}</p>
           </div>
         </div>
