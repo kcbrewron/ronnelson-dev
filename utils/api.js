@@ -1,9 +1,35 @@
-const HOME_GRAPHQL_FIELDS=`
+const HOME_GRAPHQL_QUERY=
+      `query {
+  homeCollection(limit:1) {
+    items{
       title,
-      hero {url,width,height,description,title},
+      heroImage {url,width,height,description,title},
       seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
       published,
-      siteIntro{
+      recentArticlesCollection{
+        items{
+          __typename
+          ... on Post{
+            description,
+            category,
+            title,
+            slug,
+            hero {
+              heroImage {url,width,height,description,title}
+            }
+          },
+          __typename
+          ... on LandingPage{
+            title,
+            category,
+            description,
+            heroImage {url,width,height,description,title},
+            slug,
+            category,
+          }, 
+        },
+      },
+        content{
         json
         links {
           entries {
@@ -38,8 +64,61 @@ const HOME_GRAPHQL_FIELDS=`
           }
       }
       
-  }`
+  }
+}
+}`
 
+
+const POST_BY_SLUG=`{
+    items{
+      slug,
+      seoMetadata{seoKeywords,seoTitle},
+      category,
+      title,
+      date,
+      description
+      content{json,links {
+            entries {
+              inline {
+                sys {
+                  id
+                  spaceId
+                  environmentId
+
+                }
+                __typename
+                ... on LandingPage {
+                  title
+                  slug
+                }
+              }
+              block {
+                sys {
+                  id
+                }
+              }
+            }
+          assets{
+            block {
+                sys {
+                  id
+                }
+                url
+                title
+                width
+                height
+                description
+              }
+            }
+          }
+          },
+          hero {cta,caption, showCta, title
+              heroImage {url,width,height,description,title}
+            },
+      },
+    
+    }
+}`
 
 const POST_GRAPHQL_FIELDS = `
       title
@@ -114,25 +193,20 @@ const LANDING_PAGE_QUERY = `
  * @returns 
  */
 export async function fetchLandingPage(landing, preview=false){
-  console.log(" Landing page entered here "+landing);
-  let landingPage = landing.substring(0,1).toUpperCase()+landing.substring(1);
-  //console.log("Get the landing page for slug: "+landingPage);
   const entries = await fetchGraphQL(
   `query {
-  landingPageCollection(limit:1,where: { slug_exists: true,category:"${(landingPage)}" }) {
+  landingPageCollection(limit:1,where: { slug_exists: true,category:"${(landing)}" }) {
     items{
       ${LANDING_PAGE_QUERY}`).then((res )=> {
-        console.log("Size of response= " +res?.data?.landingPageCollection?.items.length);
         //console.log('returning %s items in the landing page collection' +res.data.landingPageCollection.items[0])
         return res.data.landingPageCollection.items[0];
       }).catch((err)=>{
-        console.log("An error was received when calling the landing page query "+err);
+        console.error("An error was received when calling the landing page query "+err);
       });
     return entries;
 }
 
 async function fetchGraphQL(query, preview = false) {
-  console.log()
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
     {
@@ -150,7 +224,7 @@ async function fetchGraphQL(query, preview = false) {
     }
   ).then((response) => response.json())
   .catch((err)=>{
-    console.log("error message from contentful "+err);
+    console.error("error message from contentful "+err);
   });
 }
 
@@ -163,20 +237,6 @@ function extractPostEntries(fetchResponse) {
 }
 
 
-
-export async function getPreviewPostBySlug(slug) {
-  const entry = await fetchGraphQL(
-    `query {
-      postCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {
-        items {
-          ${POST_GRAPHQL_FIELDS}
-        }
-      }
-    }`,
-    true
-  );
-  return extractPost(entry);
-}
 
 export async function getAllPostsWithSlug() {
   const entries = await fetchGraphQL(
@@ -201,59 +261,30 @@ export async function getAllPostsWithSlug() {
  * @returns 
  */
 export async function fetchHome(){
- const entries = await fetchGraphQL(
-  `query {
-  homeCollection(limit:1) {
-    items{
-      title,
-      heroImage {url,width,height,description,title},
-      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
-      published,
-      content{
-        json
-        links {
-          entries {
-            inline {
-              sys {
-                id
-                spaceId
-                environmentId
-              }
-            __typename
-              ... on Home {
-              title
-              }
-            }
-            block {
-              sys {
-                id
-              }
-            }
-          }
-          assets{
-            block {
-                sys {
-                  id
-                }
-                url
-                title
-                width
-                height
-                description
-              }}
-          }
-      }
-      
-  }
-}
-}`);
-  return extractHome(entries);
-}
-
-function extractHome(fetchResponse){
-  const respone = fetchResponse.data.homeCollection.items?fetchResponse.data.homeCollection.items:[] ;
-  return respone;
-}
+  const entries = await fetchGraphQL(HOME_GRAPHQL_QUERY).then((res )=> {
+        return res.data.homeCollection.items[0];
+      }).catch((err)=>{
+        console.error("An error was received when calling the home page query "+err);
+      });
+    return entries;
+};
+/**
+ * 
+ * @param {String} slug represents the key for the article on contentful
+ * @returns 
+ */
+export async function getArticleBySlug(slug){
+  console.log(slug);
+  const query = `query { postCollection(limit:1,where: {slug:"${(slug)}" }) ${POST_BY_SLUG}`
+  const article = await fetchGraphQL(`query {
+    postCollection(limit:1,where: {slug:"${slug}" }) ${POST_BY_SLUG}`).then((res)=>{
+      return res.data.postCollection.items[0];
+    }).catch((err)=>{
+        console.error("An error was received when calling the query for slug: %s received error:%s "+slug, err);
+    })
+    
+    return article;
+};
 
 export async function getAllPostsForHome(preview) {
   const entries = await fetchGraphQL(

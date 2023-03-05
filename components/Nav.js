@@ -51,31 +51,34 @@ const head = function () {
 };
 
 export default function Nav() {
-  //declare initial menu state as closed
   const [menuState, setMenuState] = useState(false);
   function openMenu() {
-    console.log("showMenu");
     if (menuState ? setMenuState(false) : setMenuState(true));
   }
   return (
     <nav>
-      <div className="w-full border-b-indigoBlue border-b-4 mx-auto text-indigoBlue">
-        <div className="px-8 flex justify-between">
+      <div className="w-full border-b-indigoBlue border-b-4 mx-auto">
+        <div className="flex justify-between ml-4">
           {/* logo navigation */}
-          <div className="flex">
-            <Link
-              href="/"
-              className="flex items-center py-4 hover:text-lapisBlue"
-            >
-              <CodeBracketSquareIcon className="h-6 w-6 mr-1 text-indigoBlue" />
+          <div className="flex py-4  text-indigoBlue hover:text-fireEngine">
+            <Link href="/" className="flex items-center ">
+              <CodeBracketSquareIcon className="h-6 w-6 mr-1" />
               <span className="font-bold">ronnelson.dev</span>
             </Link>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex w-full mx-auto pl-4 py-4">
             {/* primary navigation */}
-            <div className="hidden md:flex items-center space-x-3">
+            <div className="hidden md:flex space-x-4">
               <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
+                className="block hover:text-fireEngine"
+                href="/"
+                alt="home"
+                aria-label="home"
+              >
+                Home
+              </Link>
+              <Link
+                className="block hover:text-fireEngine"
                 href="/blog/leadership"
                 alt="leadership"
                 aria-label="leadership"
@@ -83,7 +86,7 @@ export default function Nav() {
                 Leadership
               </Link>
               <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
+                className="block hover:text-fireEngine"
                 href="/blog/outdoor"
                 alt="outdoor"
                 aria-label="outdoor"
@@ -91,7 +94,7 @@ export default function Nav() {
                 Outdoors
               </Link>
               <Link
-                className="block py-4 px-4 hover:text-lapisBlue"
+                className="block hover:text-fireEngine"
                 href="/blog/cooking"
                 alt="cooking"
                 aria-label="cooking"
@@ -114,14 +117,14 @@ export default function Nav() {
           </div>
 
           {/* Mobile responsive menu here */}
-          <div className="md:hidden flex items-center text-indigoBlue">
+          <div className="flex md:hidden p-4 justify-between text-right text-indigoBlue">
             <button
-              className="mobile-menu-button px-2"
+              className="mobile-menu-button"
               aria-label="menu"
               onClick={openMenu}
             >
               <Bars3Icon
-                className={!menuState ? "visible h-6 w-6" : "hidden"}
+                className={!menuState ? "visible h-6 w-6 hover:text-fireEngine" : "hidden"}
               />
               <XMarkIcon className={menuState ? "visible h-6 w-6" : "hidden"} />
             </button>
@@ -129,28 +132,46 @@ export default function Nav() {
         </div>
       </div>
       {/* mobile */}
-      <div className={menuState ? "visible transition duration-500" : "hidden"}>
+      <div
+        className={
+          menuState
+            ? "visible justify-between text-right transition duration-700"
+            : "hidden"
+        }
+      >
         <Link
-          className="block py-4 px-4 hover:text-lapisBlue"
+          className="block py-4 px-4 hover:text-fireEngine "
+          href="/"
+          alt="home"
+          aria-label="home"
+          onClick={openMenu}
+        >
+          Home
+        </Link>
+        <Link
+          className="block hover:text-fireEngine  py-4 px-4"
           href="/blog/leadership"
           alt="leadership"
           aria-label="leadership"
+          onClick={openMenu}
         >
           Leadership
         </Link>
         <Link
-          className="block py-4 px-4 hover:text-lapisBlue"
+          className="block py-4 px-4 hover:text-fireEngine  "
           href="/blog/outdoor"
           alt="outdoor"
           aria-label="outdoor"
+          onClick={openMenu}
         >
           Outdoors
         </Link>
         <Link
-          className="block py-4 px-4 hover:text-lapisBlue"
+          className="block hover:text-fireEngine  py-4 px-4 "
           href="/blog/cooking"
           alt="cooking"
           aria-label="cooking"
+          onClick={openMenu}
         >
           Cooking
         </Link>

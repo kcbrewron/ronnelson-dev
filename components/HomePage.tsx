@@ -3,7 +3,7 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import markdownStyles from "./markdown-styles.module.css";
 
-interface LandingPage {
+interface HomePage {
   title: string;
   category: string;
   heroImage?: Hero;
@@ -112,23 +112,23 @@ function createHeroCaption(title: string) {
 // documentToReactComponents from "@contentful/rich-text-react-renderer"
 /**
  *
- * @param LandingPage Input API response for any landing page
+ * @param HomePage Input API response for any landing page
  * @returns Content layout for a landing page
  */
-export default function LandingPagePost(LandingPage: LandingPage) {
+export default function HomePage(HomePage: HomePage) {
   return (
     <div className="w-full mx-auto">
       <div className="border-b-2 border-b-bus">
-        {createHeroAsset(LandingPage.heroImage)}
+        {createHeroAsset(HomePage.heroImage)}
       </div>
       <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
-        {LandingPage.title}
+        {HomePage.title}
       </div>
       <div className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
-            LandingPage.content.json,
-            renderOptions(LandingPage.content.links)
+            HomePage.content.json,
+            renderOptions(HomePage.content.links)
           )}
         </div>
       </div>
