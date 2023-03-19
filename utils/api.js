@@ -165,7 +165,16 @@ const LANDING_PAGE_QUERY = `
                 sys {
                   id
                 }
+                __typename
+                ... on ImageCopySxS
+                
+                {
+                title,
+                copy,
+                imageOnRight,
+                image { title,url,height,width}
               }
+            }
             }
           assets{
             block {

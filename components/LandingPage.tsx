@@ -2,6 +2,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import markdownStyles from "./markdown-styles.module.css";
+import ImageSxS from "@/components/ImageSxS";
 
 interface LandingPage {
   title: string;
@@ -40,16 +41,17 @@ function renderOptions(links: any) {
   for (const asset of links.assets.block) {
     assetMap.set(asset.sys.id, asset);
   }
-
   // create an entry map
   const entryMap = new Map();
   // loop through the block linked entries and add them to the map
   for (const entry of links.entries.block) {
+    console.log("debug code here in the links.entries.block");
     entryMap.set(entry.sys.id, entry);
   }
 
   // loop through the inline linked entries and add them to the map
   for (const entry of links.entries.inline) {
+    console.log("debug code here in the links.entries.inline");
     entryMap.set(entry.sys.id, entry);
   }
 
@@ -68,11 +70,24 @@ function renderOptions(links: any) {
         }
       },
 
+      [BLOCKS.EMBEDDED_ENTRY]: (node: any, children: any) => {
+        const emEntry = entryMap.get(node.data.target.sys.id);
+        console.log("asset typename: %s", emEntry.__typename);
+        if (emEntry.__typename === "ImageCopySxS") {
+          console.log("Trying to render ImageCopySxS");
+          return <ImageSxS props={emEntry} />;
+        } else {
+          console.log(
+            "The asset type is something unexpected, " + emEntry.__typename
+          );
+        }
+      },
+
       [BLOCKS.EMBEDDED_ASSET]: (node: any, next: any) => {
         // find the asset in the assetMap by ID
         const asset = assetMap.get(node.data.target.sys.id);
 
-        // render the asset accordingly
+        //maybe its just an image
         return (
           <Image
             priority
@@ -125,7 +140,7 @@ export default function LandingPagePost(LandingPage: LandingPage) {
       <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
         {LandingPage.title}
       </div>
-      <div className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">
+      <div className="text-xl my-6">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
             LandingPage.content.json,

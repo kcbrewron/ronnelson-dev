@@ -15,10 +15,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  console.log("Get metadata for " + params);
   const response = await getData(params.slug);
   const metaData = response.seoMetadata ? response.seoMetadata : {};
-  console.log(metaData);
   const title = metaData.seoTitle || "";
   const description = metaData.seoDescription || "";
   const keywords = metaData.seoKeywords || "";

@@ -33,9 +33,10 @@ module.exports = {
     },
     colors: {
       black: "#020100",
-      bus: "#F1D302",
+      //bus: "#F1D302",
+      bus: "#FB8500",
       fireEngine: "#C1292E",
-      lapisBlue: "#235789", //use for button hover
+      lapisBlue: "#327DC3", //use for button hover
       indigoBlue: "#1D4972", //use for buttons
       white: "#FDFFFC",
       shadow: "#e6ebef"

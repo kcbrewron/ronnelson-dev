@@ -90,22 +90,7 @@ function renderOptions(links) {
     },
   };
 }
-/**
- *
- * @param @type Hero
- * @returns
- */
-function createHeroAsset(hero) {
-  return (
-    <Image
-      src={hero.url}
-      alt={hero.description}
-      width={1920}
-      height={hero.height}
-      quality={75}
-    />
-  );
-}
+
 
 // Render post.body.json to the DOM using
 // documentToReactComponents from "@contentful/rich-text-react-renderer"
@@ -115,29 +100,11 @@ function createHeroAsset(hero) {
  * @returns Content layout for a landing page
  */
 export default function ArticlePage(ArticlePage) {
-  //const heroComponent = HeroComponent(ArticlePage.hero)
+  const heroComponent = HeroComponent(ArticlePage.hero)
   return (
-    <div className="space-y-6">
-      <div className="relative w-full h-96">
-        <Image
-          src={ArticlePage.hero.heroImage.url}
-          alt={ArticlePage.hero.heroImage.description}
-          fill
-          quality={100}
-          priority
-          className="opacity-20  object-fit z-0"
-        />
-      </div>
-      <div className="w-1/8 space-x-2 space-y-6 place-items-end z-10">
-        <p className="text-3xl">{ArticlePage.title}</p>
-        <p className="text-xl">{ArticlePage.hero.caption}</p>
-        <Link className="bg-lapisBlue px-4 py-2 mt-6 drop-shadow-md
-              hover:bg-indigoBlue 
-              hover:drop-shadow-lg 
-              rounded-md text-white" href="/">
-          {ArticlePage.hero.cta} Docs
-        </Link>
-      </div>
+    <div>
+      {heroComponent}
+      
     </div>
-  );
+   );
 }
