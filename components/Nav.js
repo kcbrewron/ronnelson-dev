@@ -66,7 +66,7 @@ export default function Nav() {
               <span className="font-bold">ronnelson.dev</span>
             </Link>
           </div>
-          <div className="flex w-full mx-auto pl-4 py-4">
+          <div className="flex w-full mx-auto pl-4 py-4 text-indigoBlue">
             {/* primary navigation */}
             <div className="hidden md:flex space-x-4">
               <Link
@@ -135,7 +135,7 @@ export default function Nav() {
       <div
         className={
           menuState
-            ? "visible justify-between text-right transition duration-700"
+            ? "visible justify-between text-right transition duration-700 bg-shadow"
             : "hidden"
         }
       >

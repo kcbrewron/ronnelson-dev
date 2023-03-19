@@ -2,13 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function RecentArticleItem(item) {
-  /*console.log(
-    "Title: %s,type: %s, description:%s, slug:%s",
-    item.title,
-    item.__typename,
-    item.description,
-    item.slug
-  );*/
   const link = "blog/" + item.category + "/" + item.slug;
   const hero =
     item.__typename === "LandingPage"
