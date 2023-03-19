@@ -5,3 +5,20 @@ package = "@netlify/plugin-sitemap"
 [[plugings]]
 package = "@netlify/plugin-nextjs"
 
+[[redirects]]
+  from = "http://www.ronnelson.dev/*"
+  to = "https://www.ronnelson.dev/*"
+  status = 301
+  force = true
+  query = {path = ":path"}
+  conditions = {Language = ["en"], Country = ["US"]}
+
+[[redirects]]
+  from = "http://ronnelson.dev/*"
+  to = "https://www.ronnelson.dev/*"
+  status = 301
+  force = true
+  query = {path = ":path"}
+  conditions = {Language = ["en"], Country = ["US"]}
+
+
