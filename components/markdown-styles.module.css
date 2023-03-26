@@ -10,7 +10,7 @@
 
 
 .markdown a {
-  @apply text-lapisBlue 
+  @apply text-bus 
 }
 .markdown a:hover{
   @apply text-fireEngine
