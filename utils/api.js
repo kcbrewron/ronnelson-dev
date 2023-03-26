@@ -73,6 +73,12 @@ const POST_BY_SLUG=`{
     items{
       slug,
       seoMetadata{seoKeywords,seoTitle},
+      contentfulMetadata {
+        tags {
+            id,
+            name,
+        }
+      },
       category,
       title,
       date,
@@ -206,8 +212,8 @@ export async function fetchLandingPage(landing, preview=false){
   `query {
   landingPageCollection(limit:1,where: { slug_exists: true,category:"${(landing)}" }) {
     items{
-      ${LANDING_PAGE_QUERY}`).then((res )=> {
-        //console.log('returning %s items in the landing page collection' +res.data.landingPageCollection.items[0])
+      ${LANDING_PAGE_QUERY}`).then((res)=> {
+        console.debug('returning %s items in the %s page collection', res?.data?.landingPageCollection?.items.length, landing)
         return res.data.landingPageCollection.items[0];
       }).catch((err)=>{
         console.error("An error was received when calling the landing page query "+err);
@@ -283,7 +289,7 @@ export async function fetchHome(){
  * @returns 
  */
 export async function getArticleBySlug(slug){
-  console.log(slug);
+  console.debug(slug);
   const query = `query { postCollection(limit:1,where: {slug:"${(slug)}" }) ${POST_BY_SLUG}`
   const article = await fetchGraphQL(`query {
     postCollection(limit:1,where: {slug:"${slug}" }) ${POST_BY_SLUG}`).then((res)=>{

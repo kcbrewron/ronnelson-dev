@@ -6,6 +6,7 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "mdx"],
+  productionBrowserSourceMaps: true,
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

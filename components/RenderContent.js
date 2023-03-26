@@ -1,58 +1,45 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import markdownStyles from "./markdown-styles.module.css";
 import ImageSxS from "@/components/ImageSxS";
-
-interface LandingPage {
-  title: string;
-  category: string;
-  heroImage?: Hero;
-  seo: SeoMetadata;
-  content: Content;
-}
-interface Hero {
-  url: string;
-  description: string;
-  width: number;
-  height: number;
-  quality: number;
-}
-
-interface SeoMetadata {
-  title: string;
-  keywords: string;
-  description: string;
-}
-
-interface Content {
-  json: any;
-  links: any;
-}
+import CodeComponent from "@/components/CodeComponent";
 
 // Create a bespoke renderOptions object to target BLOCKS.EMBEDDED_ENTRY (linked block entries e.g. code blocks)
 // INLINES.EMBEDDED_ENTRY (linked inline entries e.g. a reference to another blog post)
 // and BLOCKS.EMBEDDED_ASSET (linked assets e.g. images)
 
-function renderOptions(links: any) {
+function renderOptions(content) {
   // create an asset map
   const assetMap = new Map();
+  const textMap = new Map();
   // loop through the assets and add them to the map
-  for (const asset of links.assets.block) {
+  for (const asset of content.links.assets.block) {
     assetMap.set(asset.sys.id, asset);
   }
   // create an entry map
   const entryMap = new Map();
   // loop through the block linked entries and add them to the map
-  for (const entry of links.entries.block) {
+  for (const entry of content.links.entries.block) {
     console.debug("debug code here in the links.entries.block");
     entryMap.set(entry.sys.id, entry);
   }
 
   // loop through the inline linked entries and add them to the map
-  for (const entry of links.entries.inline) {
+  for (const entry of content.links.entries.inline) {
     console.debug("debug code here in the links.entries.inline");
     entryMap.set(entry.sys.id, entry);
+  }
+
+  // grab all the content components
+  for(const entry of content.json.content){
+    //console.log("Trying to find the path of the code marks %s",JSON.stringify(entry.content[0]));
+    //console.log("Locate the Marks object %s",JSON.stringify(entry.content[0],null,2));
+    if((entry.content[0]?.marks[0]?.type)==='code'){
+        console.log('found a code element: %s', JSON.stringify(entry.content[0]?.value,null,2));
+        return <CodeComponent props={entry.content[0]?.value}/>
+    }
+    //console.log(entry.content)
   }
 
   return {
@@ -60,17 +47,23 @@ function renderOptions(links: any) {
 
     renderNode: {
       // other options...
-      [INLINES.EMBEDDED_ENTRY]: (node: any, children: any) => {
+      [INLINES.EMBEDDED_ENTRY]: (node, children) => {
         // find the entry in the entryMap by ID
         const entry = entryMap.get(node.data.target.sys.id);
 
-        // render the entries as needed
-        if (entry.__typename === "LandingPage") {
-          return <a href={`/blog/${entry.slug}`}>{entry.title}</a>;
+      },
+      
+      [MARKS.CODE]: (node,children)=>{
+        // find the entry in the entryMap by ID
+        const entry = entryMap.get(node.data);
+            console.log(entry);
+                if (entry.marks[0].type === 'code'){
+            console.log('found a code element');
+            return <CodeComponent props={entry}/>
         }
       },
 
-      [BLOCKS.EMBEDDED_ENTRY]: (node: any, children: any) => {
+      [BLOCKS.EMBEDDED_ENTRY]: (node,children) => {
         const emEntry = entryMap.get(node.data.target.sys.id);
         console.debug("asset typename: %s", emEntry.__typename);
         if (emEntry.__typename === "ImageCopySxS") {
@@ -83,7 +76,7 @@ function renderOptions(links: any) {
         }
       },
 
-      [BLOCKS.EMBEDDED_ASSET]: (node: any, next: any) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node, next) => {
         // find the asset in the assetMap by ID
         const asset = assetMap.get(node.data.target.sys.id);
 
@@ -103,51 +96,18 @@ function renderOptions(links: any) {
     },
   };
 }
-/**
- *
- * @param @type Hero
- * @returns
- */
-function createHeroAsset(hero: any) {
+export default function RenderContent(content) {
   return (
-    <Image
-      src={hero.url}
-      alt={hero.description}
-      width={1920}
-      height={370}
-      quality={75}
-      priority
-    />
-  );
-}
+    <>
 
-function createHeroCaption(title: string) {
-  return <div>{title}</div>;
-}
-// Render post.body.json to the DOM using
-// documentToReactComponents from "@contentful/rich-text-react-renderer"
-/**
- *
- * @param LandingPage Input API response for any landing page
- * @returns Content layout for a landing page
- */
-export default function LandingPagePost(LandingPage: LandingPage) {
-  return (
-    <div className="w-full mx-auto">
-      <div className="border-b-2 border-b-bus">
-        {createHeroAsset(LandingPage.heroImage)}
-      </div>
-      <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
-        {LandingPage.title}
-      </div>
-      <div className="text-xl my-6">
+      <div className="text-xl">
         <div className={markdownStyles["markdown"]}>
           {documentToReactComponents(
-            LandingPage.content.json,
-            renderOptions(LandingPage.content.links)
+            content.json,
+            renderOptions(content)
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
