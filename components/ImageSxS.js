@@ -2,7 +2,6 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
 export default function ImageSxS(props) {
-  //console.log(props.props);
   return props.props.imageOnRight ? (
     <div className="w-full bg-shadow py-4 my-6">
       <div className="w-10/12 mx-auto md:flex justify-between">

@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 async function getData(slug: string) {
   const pageContent = await fetchLandingPage(slug["0"]).catch((err) => {
-    console.log("Error retrieving content " + err);
+    console.error("Error retrieving content " + err);
   });
   return pageContent;
 }
@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const response = await getData(params.slug);
-  const metaData = response.seoMetadata ? response.seoMetadata : {};
+  const metaData = response?.seoMetadata ? response.seoMetadata : {};
   const title = metaData.seoTitle || "";
   const description = metaData.seoDescription || "";
   const keywords = metaData.seoKeywords || "";

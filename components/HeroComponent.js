@@ -8,17 +8,6 @@ import Link from "next/link";
  */
 
 export default function HeroComponent(heroConfiguration) {
-  /*
-        console.log("heroConfiguration cta: %s, showCta: %s, title: %s,caption: %s", heroConfiguration.cta,
-        heroConfiguration.showCta,
-        heroConfiguration.title,
-        heroConfiguration.caption);
-    
-        console.log("image configuration src:%s, width:%s, height:%s",
-        heroConfiguration.heroImage.
-        url,heroConfiguration.heroImage.width,
-        heroConfiguration.heroImage.height)
-    */
 
   return (
     <>
@@ -33,14 +22,15 @@ export default function HeroComponent(heroConfiguration) {
           />
           
         </div>
-        <div className="w-full bg-fireEngine mx-auto space-y-4 border-t-indigoBlue border-b-indigoBlue border-t-2">
-        <div className="text-4xl bold text-center text-shadow font-semibold">
+        <div className="w-full bg-fireEngine mx-auto border-t-indigoBlue border-b-bus border-b-4">
+        {/* <div className="text-4xl bold text-center text-shadow font-semibold">
           {heroConfiguration.title}
         </div>
         <div className="text-xl bold text-center text-white">
           {heroConfiguration.caption}
         </div>
-      </div>
+  */}
+        </div>
       </div>
     </>
   );
