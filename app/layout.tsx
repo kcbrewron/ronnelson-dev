@@ -4,17 +4,20 @@ import Nav from "../components/Nav";
 import Script from "next/script";
 import Head from "next/head";
 
+const tagId = process.env.TAG_ID;
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  console.log(tagId);
+
   return (
     <html lang="en">
       <Script
         async
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-7DQP11RHPK"
+        src="https://www.googletagmanager.com/gtag/js?id={tagId}"
       ></Script>
       <Script
         id="google-analytics"
@@ -23,7 +26,7 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-7DQP11RHPK', {
+          gtag('config', '${tagId}', {
             page_path: window.location.pathname,
           });`,
         }}

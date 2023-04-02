@@ -68,11 +68,39 @@ const HOME_GRAPHQL_QUERY=
 }
 }`
 
+const SOFTWARE_POSTS_BY_TAG=`
+{ postCollection( limit: 3, where: {
+    contentfulMetadata: {
+      tags_exists: true
+      tags: {
+          id_contains_some: ["softwareNextjs","softwareSql"]
+      }
+  }
+  }) {
+    items{
+      slug,
+      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
+      contentfulMetadata {
+        tags {
+            id,
+            name,
+        }
+      }
+      title,
+      date,
+      description
+      hero {cta,caption, showCta, title
+            heroImage {url,width,height,description,title}
+            },
+      },
+    
+    }
+}`
 
 const POST_BY_SLUG=`{
     items{
       slug,
-      seoMetadata{seoKeywords,seoTitle},
+      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
       contentfulMetadata {
         tags {
             id,
