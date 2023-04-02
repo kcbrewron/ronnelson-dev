@@ -31,16 +31,16 @@ function renderOptions(content) {
     entryMap.set(entry.sys.id, entry);
   }
 
-  // grab all the content components
-  for(const entry of content.json.content){
-    //console.log("Trying to find the path of the code marks %s",JSON.stringify(entry.content[0]));
-    //console.log("Locate the Marks object %s",JSON.stringify(entry.content[0],null,2));
-    if((entry.content[0]?.marks[0]?.type)==='code'){
-        console.log('found a code element: %s', JSON.stringify(entry.content[0]?.value,null,2));
-        return <CodeComponent props={entry.content[0]?.value}/>
-    }
-    //console.log(entry.content)
-  }
+  // // grab all the content components
+  // for(const entry of content.json.content){
+  //   //console.log("Trying to find the path of the code marks %s",JSON.stringify(entry.content[0]));
+  //   //console.log("Locate the Marks object %s",JSON.stringify(entry.content[0],null,2));
+  //   if((entry.content[0]?.marks[0]?.type)==='code'){
+  //       console.log('found a code element: %s', JSON.stringify(entry.content[0]?.value,null,2));
+  //       return <CodeComponent props={entry.content[0]?.value}/>
+  //   }
+  //   //console.log(entry.content)
+  // }
 
   return {
     // other options...
