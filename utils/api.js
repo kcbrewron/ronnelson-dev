@@ -79,7 +79,7 @@ const SOFTWARE_POSTS_BY_TAG=`
   }) {
     items{
       slug,
-      seoMetadata{seoKeywords,seoTitle},
+      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
       contentfulMetadata {
         tags {
             id,
@@ -100,7 +100,7 @@ const SOFTWARE_POSTS_BY_TAG=`
 const POST_BY_SLUG=`{
     items{
       slug,
-      seoMetadata{seoKeywords,seoTitle},
+      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
       contentfulMetadata {
         tags {
             id,

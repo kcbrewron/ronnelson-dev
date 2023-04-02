@@ -17,6 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const response = await getData(params.slug);
   const metaData = response.seoMetadata ? response.seoMetadata : {};
+  console.log(response.seoMetadata);
   const title = metaData.seoTitle || "";
   const description = metaData.seoDescription || "";
   const keywords = metaData.seoKeywords || "";
@@ -24,6 +25,7 @@ export async function generateMetadata({
     title: title,
     description: description,
     keywords: keywords,
+    authors: [{ name: "Ron", url: "https://ronnelson.dev" }],
   };
 }
 
