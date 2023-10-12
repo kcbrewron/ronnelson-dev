@@ -118,10 +118,10 @@ function createHeroCaption(title: string) {
 export default function HomePage(HomePage: HomePage) {
   return (
     <div className="w-full mx-auto">
-      <div className="border-b-2 border-b-bus">
+      <div className="border-b-2 border-b-orange-600">
         {createHeroAsset(HomePage.heroImage)}
       </div>
-      <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
+      <div className="w-full text-center text-slate-50 py-6 text-2xl bg-slate-900 mx-auto">
         {HomePage.title}
       </div>
       <div className="w-3/4 px-2 space-y-4 mx-auto text-xl pb-4">

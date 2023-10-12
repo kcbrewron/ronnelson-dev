@@ -4,7 +4,7 @@ const HOME_GRAPHQL_QUERY=
     items{
       title,
       heroImage {url,width,height,description,title},
-      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
+      seoMetadata{seoTitle,seoKeywords, seoDescription,author,hideFromSearchEnginesNoindex,searchEngineNoFollow },
       published,
       recentArticlesCollection{
         items{
@@ -79,7 +79,7 @@ const SOFTWARE_POSTS_BY_TAG=`
   }) {
     items{
       slug,
-      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
+      seoMetadata{seoKeywords,seoTitle,seoDescription,author,hideFromSearchEnginesNoindex,searchEngineNoFollow},
       contentfulMetadata {
         tags {
             id,
@@ -100,7 +100,7 @@ const SOFTWARE_POSTS_BY_TAG=`
 const POST_BY_SLUG=`{
     items{
       slug,
-      seoMetadata{seoKeywords,seoTitle,seoDescription,hideFromSearchEnginesNoindex,searchEngineNoFollow},
+      seoMetadata{seoKeywords,seoTitle,seoDescription,author,hideFromSearchEnginesNoindex,searchEngineNoFollow},
       contentfulMetadata {
         tags {
             id,
@@ -172,11 +172,26 @@ const POST_GRAPHQL_FIELDS = `
       }
 `;
 
+const CATEGORY_PREVIEW = `
+    items{
+      title,
+      slug,
+      description,
+      category,
+      hero {
+              heroImage {url,width,height,description,title}
+            },      
+      
+  }
+}
+}`
+
 const LANDING_PAGE_QUERY = `
       title,
       category,
+      contentfulMetadata { tags { id, name}},
       heroImage{url,width,height,description,title},
-      seoMetadata{seoTitle,seoKeywords, seoDescription, hideFromSearchEnginesNoindex,searchEngineNoFollow },
+      seoMetadata{seoTitle,seoKeywords, seoDescription,author,hideFromSearchEnginesNoindex,searchEngineNoFollow },
       slug,
       content {
           json
@@ -236,12 +251,13 @@ const LANDING_PAGE_QUERY = `
  * @returns 
  */
 export async function fetchLandingPage(landing, preview=false){
+  console.log('Entering function to fetch landing page '+landing);
   const entries = await fetchGraphQL(
   `query {
-  landingPageCollection(limit:1,where: { slug_exists: true,category:"${(landing)}" }) {
+  landingPageCollection(limit:1,where: { slug_exists: true, category:"${(landing)}" }) {
     items{
       ${LANDING_PAGE_QUERY}`).then((res)=> {
-        console.debug('returning %s items in the %s page collection', res?.data?.landingPageCollection?.items.length, landing)
+        console.log('returning %s items in the %s page collection', res?.data?.landingPageCollection?.items.length, landing)
         return res.data.landingPageCollection.items[0];
       }).catch((err)=>{
         console.error("An error was received when calling the landing page query "+err);
@@ -287,6 +303,23 @@ export async function getAllPostsWithSlug() {
       postCollection(where: { slug_exists: true }, order: date_DESC) {
         items {
           ${POST_GRAPHQL_FIELDS}
+        }
+      }
+    }`
+  );
+  return extractPostEntries(entries);
+}
+
+export async function getRecentPostsInCategory(category) {
+  console.log(`Incoming categor %s`, category);
+  const entries = await fetchGraphQL(
+    `query { postCollection(limit: 3 where: {
+    contentfulMetadata: { 
+      tags: { 
+        id_contains_all: ${category} }
+  }}) {
+        items {
+          ${CATEGORY_PREVIEW}
         }
       }
     }`

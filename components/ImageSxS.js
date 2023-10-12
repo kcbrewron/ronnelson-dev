@@ -3,10 +3,10 @@ import ReactMarkdown from "react-markdown";
 
 export default function ImageSxS(props) {
   return props.props.imageOnRight ? (
-    <div className="w-full bg-shadow py-4 my-6">
+    <div className="w-full bg-slate-300 py-4 my-6">
       <div className="w-10/12 mx-auto md:flex justify-between">
         <div className="w-full md:w-1/2 my-auto">
-          <span className="text-xl text-indigoBlue">
+          <span className="text-xl text-slate-900">
             <ReactMarkdown>{props.props.title}</ReactMarkdown></span>
           <span>
             <ReactMarkdown>{props.props.copy}</ReactMarkdown>
@@ -37,7 +37,7 @@ export default function ImageSxS(props) {
           />
         </div>
         <div className="w-full md:w-1/2 my-auto">
-          <span className="text-xl text-indigoBlue">
+          <span className="text-xl text-slate-900">
             <ReactMarkdown>{props.props.title}</ReactMarkdown></span>
           <span>
             <ReactMarkdown>{props.props.copy}</ReactMarkdown>

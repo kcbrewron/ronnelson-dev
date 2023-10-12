@@ -5,27 +5,26 @@ export default function Profile() {
   return (
     <>
       <div className="flex justify-items-between space-x-4">
-        <Link href="/about" passHref className="hover:hover:text-bus">
-          {" "}
-          About Me{" "}
+        <Link href="/about" passHref className="hover:text-orange-600">
+          About Me
         </Link>
         <Link
           href="https://github.com/kcbrewron"
-          className="hover:hover:text-bus"
+          className="hover:text-orange-600"
           passHref
         >
           Github
         </Link>
         <Link
           href="https://www.linkedin.com/in/kc-ronnelson/"
-          className="hover:text-bus"
+          className="hover:text-orange-600"
           passHref
         >
           LinkedIn
         </Link>
         <Link
           href="https://twitter.com/kcbrewron"
-          className="hover:text-bus"
+          className="hover:text-orange-600"
           passHref
         >
           Twitter

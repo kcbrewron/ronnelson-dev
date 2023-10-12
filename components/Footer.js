@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
   let today = new Date();
   return (
-    <div className="w-full border-t-fireEngine border-t-2 mx-auto bg-indigoBlue text-white">
+    <div className="w-full border-t-orange-600 border-t-2 mx-auto bg-slate-900 text-white">
       <div className="flex justify-between">
         {/* copy right information */}
         <div className="flex">
@@ -18,13 +18,13 @@ export default function Footer() {
 
         {/* profile navigation */}
         <div className="hidden md:flex mr-4 space-x-4 py-3">
-          <Link href="/about" passHref className="hover:text-fireEngine">
+          <Link href="/about" passHref className="hover:text-orange-600">
             About Me
           </Link>
           <Link
             href="https://github.com/kcbrewron"
             target={"_blank"}
-            className="hover:text-fireEngine"
+            className="hover:text-orange-600"
             passHref
           >
             Github
@@ -32,7 +32,7 @@ export default function Footer() {
           <Link
             href="https://www.linkedin.com/in/kc-ronnelson/"
             target={"_blank"}
-            className="hover:text-fireEngine"
+            className="hover:text-orange-600"
             passHref
           >
             LinkedIn
@@ -40,7 +40,7 @@ export default function Footer() {
           <Link
             href="https://twitter.com/kcbrewron"
             target={"_blank"}
-            className="hover:text-fireEngine"
+            className="hover:text-orange-600"
             passHref
           >
             Twitter
