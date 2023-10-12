@@ -1,9 +1,11 @@
 import Image from "next/image";
 import fetchData from "../../utils/github";
 import "../globals.css";
+import Button from "@/components/Button";
 
-export const metadata = {
+const metadata = {
   title: "Journey with Me",
+  authors: [{ name: "Ron Nelson", url: "https://github.com/kcbrewron" }],
   keywords:
     "software development, coding, tech, outdoor, camping, family, hobbies, adventures, tech gadgets, campsites, hiking, family camping, outdoor family",
   description:
@@ -43,14 +45,13 @@ export default async function Home() {
             className="rounded-full"
           />
         </div>
-        <div className="text-indigoBlue italic text-xl py-4">
+        <div className="text-slate-700 italic text-xl py-4">
           &quot;There are five important things for living a successful and
           fulfilling life: never stop dreaming, never stop believing, never give
           up, never stop trying, and never stop learning.&quot; <br /> - Roy
           Bennet
         </div>
       </div>
-
       <div id="bio" className="max-w-2xl px-2 space-y-4 mx-auto text-xl pb-4">
         <div>
           Hi there! I&apos;m Ron, application developer and solution architect

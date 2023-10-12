@@ -22,15 +22,6 @@ export default function HeroComponent(heroConfiguration) {
           />
           
         </div>
-        <div className="w-full bg-fireEngine mx-auto border-t-indigoBlue border-b-bus border-b-4">
-        {/* <div className="text-4xl bold text-center text-shadow font-semibold">
-          {heroConfiguration.title}
-        </div>
-        <div className="text-xl bold text-center text-white">
-          {heroConfiguration.caption}
-        </div>
-  */}
-        </div>
       </div>
     </>
   );

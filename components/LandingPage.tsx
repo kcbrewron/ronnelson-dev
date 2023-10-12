@@ -3,9 +3,11 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import markdownStyles from "./markdown-styles.module.css";
 import ImageSxS from "@/components/ImageSxS";
+import { Tag } from "contentful";
 
 interface LandingPage {
   title: string;
+  tags: Array<Tag>;
   category: string;
   heroImage?: Hero;
   seo: SeoMetadata;
@@ -121,6 +123,15 @@ function createHeroAsset(hero: any) {
   );
 }
 
+/**
+ *
+ * @param Tags
+ * @returns {String} category
+ *
+ * TODO process categories
+ */
+function getCategoryTag(Tags: Array<Tag>) {}
+
 function createHeroCaption(title: string) {
   return <div>{title}</div>;
 }
@@ -134,10 +145,10 @@ function createHeroCaption(title: string) {
 export default function LandingPagePost(LandingPage: LandingPage) {
   return (
     <div className="w-full mx-auto">
-      <div className="border-b-2 border-b-bus">
+      <div className="border-b-2 border-b-orange-600">
         {createHeroAsset(LandingPage.heroImage)}
       </div>
-      <div className="w-full text-center text-white py-6 text-2xl bg-indigoBlue mx-auto">
+      <div className="w-full text-center text-white py-6 text-2xl bg-slate-900 mx-auto">
         {LandingPage.title}
       </div>
       <div className="text-xl my-6">

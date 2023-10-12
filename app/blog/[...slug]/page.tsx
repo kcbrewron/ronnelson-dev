@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 async function getData(slug: string) {
+  console.log("Fetch landing page data for %s", slug);
   const pageContent = await fetchLandingPage(slug["0"]).catch((err) => {
     console.error("Error retrieving content " + err);
   });
@@ -34,6 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!res) {
     return notFound();
   }
+  //console.log(res.contentfulMetadata.tags[0].id);
   const elements = LandingPagePost(res);
 
   return (

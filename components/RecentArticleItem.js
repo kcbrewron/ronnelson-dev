@@ -22,7 +22,7 @@ export default function RecentArticleItem(item) {
   return (
     <div
       key={item.title}
-      className="rounded-xl bg-shadow px-4 py-2 my-4 space-y-4
+      className="rounded-xl bg-slate-300 px-4 py-2 my-4 space-y-4
         drop-shadow-md hover:drop-shadow-xl w-full md:w-1/3"
     >
       <div className="relative h-24">
@@ -38,7 +38,7 @@ export default function RecentArticleItem(item) {
         {/*wrapper */}
         <div>
           <Link href={link}>
-            <span className="text-lapisBlue hover:text-fireEngine text-md text-bold py-6">{item.title}</span>
+            <span className="text-slate-800 hover:text-orange-600 text-md text-bold py-6">{item.title}</span>
           </Link>
         </div>
 

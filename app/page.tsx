@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { fetchHome } from "@/utils/api";
 import { notFound } from "next/navigation";
 import RecentArticles from "@/components/RecentArticles";
@@ -6,6 +5,7 @@ import HomePage from "@/components/LandingPage";
 
 export const metadata = {
   title: "Journey with Me",
+  authors: [{ name: "Ron Nelson" }],
   keywords:
     "software development, coding, technology, outdoor, camping, family, hobbies, adventures, tech gadgets, campsites, hiking, family camping, outdoor family",
   description:

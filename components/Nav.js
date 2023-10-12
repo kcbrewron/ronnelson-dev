@@ -11,7 +11,7 @@ import { useState } from "react";
 const head = function () {
   return (
     <Head>
-      <title>Ronnelson.dev-Homepage</title>
+      <title>Ronnelson.dev</title>
       <link rel="icon" href="/favicon.ico" />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +42,7 @@ const head = function () {
         name="twitter:description"
         content="My website platform for learning development, building my skills, and challenging myself."
       />
+      <meta name="author" content="Ron Nelson" />
       <meta
         name="twitter:image"
         content="https://images.ctfassets.net/2tyl7ps8aucz/kMkX26GTOrfMLDfty6iMS/420f8da8e7414e49d58f330c068d8d8c/ronnelson.jpg"
@@ -57,20 +58,20 @@ export default function Nav() {
   }
   return (
     <nav>
-      <div className="w-full border-b-indigoBlue border-b-4 mx-auto">
+      <div className="w-full border-b-slate-900 border-b-4 mx-auto">
         <div className="flex justify-between ml-4">
           {/* logo navigation */}
-          <div className="flex py-4  text-indigoBlue hover:text-fireEngine">
+          <div className="flex py-4  text-blue-900 hover:text-orange-600">
             <Link href="/" className="flex items-center ">
               <Square3Stack3DIcon className="h-6 w-6 mr-1" />
               <span className="font-bold">ronnelson.dev</span>
             </Link>
           </div>
-          <div className="flex w-full mx-auto pl-4 py-4 text-indigoBlue">
+          <div className="flex w-full mx-auto pl-4 py-4 text-blue-900">
             {/* primary navigation */}
             <div className="hidden md:flex space-x-4">
               <Link
-                className="block hover:text-fireEngine"
+                className="block hover:text-orange-600"
                 href="/"
                 alt="home"
                 aria-label="home"
@@ -78,7 +79,7 @@ export default function Nav() {
                 Home
               </Link>
               <Link
-                className="block hover:text-fireEngine"
+                className="block hover:text-orange-600"
                 href="/blog/leadership"
                 alt="leadership"
                 aria-label="leadership"
@@ -86,7 +87,15 @@ export default function Nav() {
                 Leadership
               </Link>
               <Link
-                className="block hover:text-fireEngine"
+                className="block hover:text-orange-600"
+                href="/blog/software"
+                alt="software"
+                aria-label="software"
+              >
+                Development
+              </Link>
+              <Link
+                className="block hover:text-orange-600"
                 href="/blog/outdoor"
                 alt="outdoor"
                 aria-label="outdoor"
@@ -94,7 +103,7 @@ export default function Nav() {
                 Outdoors
               </Link>
               <Link
-                className="block hover:text-fireEngine"
+                className="block hover:text-orange-600"
                 href="/blog/cooking"
                 alt="cooking"
                 aria-label="cooking"
@@ -107,7 +116,7 @@ export default function Nav() {
           {/* secondary navigation */}
           <div className="hidden md:flex items-center space-x-2">
             <Link
-              className="hidden py-1 px-2 bg-indigoBlue text-white rounded-md hover:bg-lapisBlue hover:text-white transition duration-300"
+              className="hidden py-1 px-2 bg-orange-600 text-white rounded-md hover:bg-orange-500 hover:text-white transition duration-300"
               href="signup"
               alt="signup"
               aria-label="sign up"
@@ -117,14 +126,14 @@ export default function Nav() {
           </div>
 
           {/* Mobile responsive menu here */}
-          <div className="flex md:hidden p-4 justify-between text-right text-indigoBlue">
+          <div className="flex md:hidden p-4 justify-between text-right text-blue-900">
             <button
               className="mobile-menu-button"
               aria-label="menu"
               onClick={openMenu}
             >
               <Bars3Icon
-                className={!menuState ? "visible h-6 w-6 hover:text-fireEngine" : "hidden"}
+                className={!menuState ? "visible h-6 w-6 hover:text-orange-600" : "hidden"}
               />
               <XMarkIcon className={menuState ? "visible h-6 w-6" : "hidden"} />
             </button>
@@ -140,7 +149,7 @@ export default function Nav() {
         }
       >
         <Link
-          className="block py-4 px-4 hover:text-fireEngine "
+          className="block py-4 px-4 hover:text-orange-600 "
           href="/"
           alt="home"
           aria-label="home"
@@ -149,7 +158,7 @@ export default function Nav() {
           Home
         </Link>
         <Link
-          className="block hover:text-fireEngine  py-4 px-4"
+          className="block hover:text-orange-600  py-4 px-4"
           href="/blog/leadership"
           alt="leadership"
           aria-label="leadership"
@@ -158,7 +167,16 @@ export default function Nav() {
           Leadership
         </Link>
         <Link
-          className="block py-4 px-4 hover:text-fireEngine  "
+          className="block hover:text-orange-600  py-4 px-4"
+          href="/blog/software"
+          alt="software"
+          aria-label="software"
+          onClick={openMenu}
+        >
+          Development
+        </Link>
+        <Link
+          className="block py-4 px-4 hover:text-orange-600"
           href="/blog/outdoor"
           alt="outdoor"
           aria-label="outdoor"
@@ -167,7 +185,7 @@ export default function Nav() {
           Outdoors
         </Link>
         <Link
-          className="block hover:text-fireEngine  py-4 px-4 "
+          className="block hover:text-orange-600  py-4 px-4 "
           href="/blog/cooking"
           alt="cooking"
           aria-label="cooking"
